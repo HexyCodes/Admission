@@ -7,12 +7,14 @@ output:
     template: ./svm-latex-ms.tex
     toc: true
     toc_depth: 2
+    number_sections: true
 title: "Predicting Admission Probability in U.S Grad school using Linear Models and Machine Learning Algorithms"
 thanks: "S.V Miller for providing the Pandoc template: github.com/svmiller"
 author:
 - name: Arumugam Thiagarajan
   affiliation: Professional Certificate in Data Science, Harvard University
-abstract: "This document provides an introduction to R Markdown, argues for its..."
+abstract: "The project develops and compares a linear and a suite of machine learning algorithms that predicts the admission probabilty of applicants to United States Graduate Schools. The applicant characterisitics and academic standings such as, TOEFL scores, GRE scores, Cumulative Grade Point Average (CGPA), Letter of Recommendation (LOR) and Statement of Purpose are some of the attributes that are used to predict their admission probability to universities. A regression based approach was used and the dataset was explored for trends, cleansed with relevant attributes and models were built using linear regression and machine learning algorithm. Training and validation datasets were estbalished at a 50:50 proportion at random. Root Mean Square and R2 values were used as measures of performance and the results revealed that linear regression model and an ensemble of machine learning models both predicted the outcomes with the same level of accuracy. The RMSE values were at 0.066 with an r2 value of 0.88"
+
 keywords: "house rent, machine learning, linear models"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 geometry: margin=1in
@@ -248,11 +250,27 @@ From the data types, boxplots and intial data exploration, it is evident that th
 
 
 
-
-
-
-
+## Linear Model
 ```{r}
+mod.lm=lm(Chance.of.Admit~., data=traindf)
+pred.lm=predict(mod.lm, newdata=valdf)
+RMSE(pred.lm, valdf$Chance.of.Admit)
+
+stepAIC(mod.lm, direction="both")
+
+
+mod.lm.step=lm(Chance.of.Admit~GRE.Score+
+                 TOEFL.Score+LOR+CGPA, data=traindf)
+summary(mod.lm.step)
+
+```
+
+
+
+
+## Machine Learning Models
+```{r}
+knitr::opts_chunk$set(cache=T)
  
 set.seed(1)
  
@@ -283,7 +301,7 @@ varImp(models$glmnet)
 ```
 
 
-#Model with Reduced Features
+## Model with Reduced Features
 ```{r}
 # traindf%>%dplyr::select(-Research, -SOP)->traindf_red
 # cl=makePSOCKcluster(detectCores()-1)
@@ -307,7 +325,7 @@ varImp(models$glmnet)
 
 
 
-# Feature Reduction 
+## Feature Reduction 
 ```{r}
 set.seed(1)
 cl=makePSOCKcluster(detectCores()-1)
@@ -330,21 +348,6 @@ plot(lmProfile)
 
 
 
-
-# Linear Model
-```{r}
-mod.lm=lm(Chance.of.Admit~., data=traindf)
-pred.lm=predict(mod.lm, newdata=valdf)
-RMSE(pred.lm, valdf$Chance.of.Admit)
-
-stepAIC(mod.lm, direction="both")
-
-
-mod.lm.step=lm(Chance.of.Admit~GRE.Score+
-                 TOEFL.Score+LOR+CGPA, data=traindf)
-summary(mod.lm.step)
-pred.lm.step=predict(mod.lm.step, newdata = valdf)
-```
 
 
 
@@ -370,10 +373,21 @@ plot(ens)
 
 
 #Validation
+
+In this step, the model are evaluated for their performance. The models are used to predict the admission probabilities of the students with the validation dataset which was reserved from participating in the model developent process. The actual values of the admission rates were compared to the predicted values from various models. Both RMSE an the R2 values were evaluated. 
+
+
 ```{r}
+#Prediction from Linear model 
+pred.lm.step=predict(mod.lm.step, newdata = valdf) 
+
+#Predicted from Rborist 
 
  predicted.Rborist=predict(models$Rborist, newdata=valdf)
+ 
+#Prediction from Ensemble of the models
  predicted.ens=predict(ens, newdata=valdf)
+ 
  
  data.frame(Rborist=RMSE(predicted.Rborist, valdf$Chance.of.Admit), 
             Ensemble=RMSE(predicted.ens, valdf$Chance.of.Admit),
@@ -388,17 +402,8 @@ plot(ens)
 
 
 # Conclusion
-```{r}
-mean(valdf$Chance.of.Admit)
-sd(valdf$Chance.of.Admit)
-plot(pred.lm, valdf$Chance.of.Admit)
-abline()
-plot(predicted.ens, valdf$Chance.of.Admit)
 
-```
+Comparison was made between a linear regression model and a ensemble technique with machine learning algorithms for their abilities to predict the admission probability of applicants to US graduate schools. The applicant characteristics such as GRE.Score, TOEFL.Score, CGPA, LOR and SOP were positively correlated with the admission probabilities. Both linear regression and an ensemble of maching learning algorithms both predicted the outcomes with great accuracy (RME =0.065 and R2 of 0.88). For this given problem, either of the approaches will work. Nevertheless, owing to the simplicy of linear model, for practical purposes, the linear model approach is favored.
 
-# Session Information
-```{r}
-print(sessionInfo())
-```
-
+ 
+ 
