@@ -1,47 +1,53 @@
 ---
-output: 
-  pdf_document:
-    keep_tex: true
-    fig_caption: true
-    latex_engine: pdflatex
-    template: ./svm-latex-ms.tex
-    toc: true
-    toc_depth: 2
-    number_sections: true
-title: "Predicting Admission Probability in U.S Grad school using Linear Models and Machine Learning Algorithms"
-thanks: "S.V Miller for providing the Pandoc template: github.com/svmiller"
+title: Predicting Admission Probability in U.S Grad school using Linear Models and
+  Machine Learning Algorithms
 author:
-- name: Arumugam Thiagarajan
-  affiliation: Professional Certificate in Data Science, Harvard University
-abstract: "The project develops and compares a linear and a suite of machine learning algorithms that predicts the admission probabilty of applicants to United States Graduate Schools. The applicant characterisitics and academic standings such as, TOEFL scores, GRE scores, Cumulative Grade Point Average (CGPA), Letter of Recommendation (LOR) and Statement of Purpose are some of the attributes that are used to predict their admission probability to universities. A regression based approach was used and the dataset was explored for trends, cleansed with relevant attributes and models were built using linear regression and machine learning algorithm. Training and validation datasets were estbalished at a 50:50 proportion at random. Root Mean Square and R2 values were used as measures of performance and the results revealed that linear regression model and an ensemble of machine learning models both predicted the outcomes with the same level of accuracy. The RMSE values were at 0.066 with an r2 value of 0.88"
-
-keywords: "house rent, machine learning, linear models"
+- affiliation: Professional Certificate in Data Science, Harvard University
+  name: Arumugam Thiagarajan
 date: "`r format(Sys.time(), '%B %d, %Y')`"
-geometry: margin=1in
-fontfamily: mathpazo
+output:
+  pdf_document:
+    fig_caption: yes
+    keep_tex: yes
+    latex_engine: pdflatex
+    number_sections: yes
+    template: ./svm-latex-ms.tex
+    toc: yes
+    toc_depth: 2
+  html_document:
+    df_print: paged
+    toc: yes
+    toc_depth: '2'
 fontsize: 11pt
-# spacing: double
-#bibliography: ~/houserent.bib
-#biblio-style: apsr
+geometry: margin=1in
+keywords: house rent, machine learning, linear models
+fontfamily: mathpazo
+thanks: 'S.V Miller for providing the Pandoc template: github.com/svmiller'
+abstract: The project builds and compares linear and suite of machine learning
+  algorithms that predict the admission probabilty of applicants to United States
+  Graduate Schools. The applicant characterisitics and academic standings such as,
+  TOEFL scores, GRE scores, Cumulative Grade Point Average (CGPA), Letter of Recommendation
+  (LOR) and Statement of Purpose are some of the features that are used to predict
+  their probability of university admission. A regression based approach was used
+  and the dataset was explored for trends. Dataset was cleansed with relevant features and models
+  models. 
+  were built using linear regression and a machine learning algorithms. Training and validation datasets were established at a 50:50 proportion at random. Root Mean Square Error and R2 values were used as measures of performance and the results revealed that GLMnet achieved a higher level of accuracy compared any other models. The RMSE values  were at 0.065 with an r2 value of 0.887, better than the ensemble or linear regression
 ---
 
 
-# Executive Summary
-
-This project builds a mathematical model that predicts the house rents in selected Brazilian cities. 
-
+ 
 
 # Objective
-Predict the admission rates in United States Grad School using the academic scores of the applicants, and the university rankings. Both general linear models and machine learning algorithms will be used and their performances will be compared. Root Mean Squarewill be used as the measure of performance for the model.  
+Predict the admission rates of United States Graduate Schools using the academic scores of the applicants and university rankings. Both general linear models and machine learning algorithms will be used and their performances will be compared. Root Mean Square and R2 will be used as the measure of performance for the models.  
 
 
-#Install and load up the libraries that are required for the analysis to run.
-```{r echo=F, inlcude=F, message=F}
+
+```{r loadlibraries, echo=F, inlcude=F, message=F}
 needed.packages <- c("tidyverse", "caret", "knitr", "MASS",
                      "ppcor" , "doParallel", "ggthemes", 
                      "corrplot", "glmnet", "car", "Rborist",
                      "caretEnsemble", "PerformanceAnalytics", 
-                     "DataExplorer", "forecast", "kableExtra")
+                     "DataExplorer", "forecast", "kableExtra", "readr")
 
 new.packages <- needed.packages[!(needed.packages %in% installed.packages()[,"Package"])]
 
@@ -63,56 +69,57 @@ library(glmnet)
 library(car)
 library(Rborist)
 library(kableExtra)
+library(readr)
 library(PerformanceAnalytics)
 ```
 
-# Load the data that is used for the development of the model.
+# Materials and Methods 
+## Input Data
+The original data is available for public at the following url: www.kaggle.com/mohansacharya/ graduate-admissions
+Since a direct download from kaggle requires an authentication, the whole dataset is uploaded to a github account. The data and codes are downloaded from the following github repository. 
+https://github.com/HexyCodes/Admission.git. This dataset contains, 400 rows of data and 8 features. 
 
-The original data is available for public in the following url: https://www.kaggle.com/
-
-Since a direct download from kaggle requires an authentication, the whole dataset is uploaded to github account. The data and codes can be downloaded from the following github repository. 
-https://github.com/HexyCodes/ 
-
-This dataset contains, 400 rows of data and 8 attributes. 
-
-#Data characteristics and Summary
-```{r}
-adm=read.csv("~/Documents/Harvard/R/CapStone/Admission/US_grad_admission.csv", 
-             stringsAsFactors = F)
+```{r download_data, results='asis' }
+url="https://raw.githubusercontent.com/HexyCodes/Admission/master/US_grad_admission.csv"
+adm=read_csv(url)
 dim(adm) # find the dimensions of the data.frame
+colnames(adm)=c("Serial.No", "GRE.Score", "TOEFL.Score", "University.Rating", 
+                "SOP", "LOR", "CGPA", "Research", "Chance.of.Admit")
 ```
 
 
-# Exploratory Data Analysis
+## Exploratory Data Analysis
 
-Here the data is analyzed for their summarized characteristics through visualization. This step allows us to find the patterns, trends and any anamolies if exist in the data. The serial number column has been removed to cleanse the data removing unrelated column. This was an obvious choice as this will add unncessary noise to the modeling process.
-```{r}
+In this exploration, the data is analyzed with their summarized characteristics and examined through visualization charts. This step allows to find the patterns, trends and any anamolies that may exist in the data. The serial number column has been removed. This was an obvious choice as this would add unncessary noise to the modeling process.
+```{r exploratory_analysis}
 class(adm)
 head(adm,5) # look at the data type of columns
 print(anyNA(adm))# check for missing values
 summary(adm) # quantile distribution of the predicted values
-adm%>%ggplot(aes(x=Chance.of.Admit))+geom_density(bins = 20, fill="blue") + theme_bw() 
+adm%>%ggplot(aes(x=Chance.of.Admit))+geom_density(fill="blue") + theme_bw() 
 
   # distribution 
 #pattern of the predicted value
 qqnorm(adm$Chance.of.Admit)
  
  
-adm%>%dplyr::select(-Serial.No.)->adm # Remove Serial number from the daa. 
+adm%>%dplyr::select(-Serial.No)->adm # Remove Serial number from the daa. 
+# distribution all predictors in the data frame
 plot_density(adm, 
              geom_density_args = list("fill"="blue", 
-                                      "alpha"=0.6)) # distribution all predictors in the data frame
+                                      "alpha"=0.6), 
+             ggtheme = theme_bw()) 
  
 ```
 
-# Removing Extreme values 
-Histogram and boxplots of the admission vector indicates a normal distribution for all the features. It is a recommended practice to examine the dataset for outliers. Therefore, a Inter quantile range (IQR) methodology was used to identify the "proposed outliers". First, the Q1 and Q3 quantile are identified, then the IRQ was calculated as teh difference between the Q3 and Q1. The range of values that exist below the IQR*1.5 or above IQR*1.5 were eliminated for this project. From the results only two rows were identified as potential outliers. Considering the low occurrence of these values, the dataset is being used as such with no removal of outliers. 
+## Removing Extreme values 
+Histogram and boxplots of the 'Chance of Admission' vector indicates a normal distribution for all the features. It is a recommended practice to examine the dataset for outliers. Therefore, a Inter quantile range (IQR) methodology was used to identify the "proposed outliers". First, the Q1 and Q3 quantile are identified, then the IRQ was calculated as the difference between the Q3 and Q1. The range of values that exist below the IQR*1.5 or above IQR*1.5 were eliminated for this project. From the results, only two rows were identified as potential outliers. Considering the low occurrence of these values, the dataset is being used as such without removal of outliers. 
 
-```{r}
+```{r dataexploration}
 
 any(is.na(adm)) # Checking for any missing values
 
-
+#Function to check the outliers
 IQR.outliers <- function(x) {
   if(any(is.na(x)))
     stop("x is missing values")
@@ -130,7 +137,7 @@ IQR.outliers <- function(x) {
 }
 
 
-
+#list of outliers
 outliers=IQR.outliers(adm$Chance.of.Admit)
 
 
@@ -138,11 +145,13 @@ outliers=IQR.outliers(adm$Chance.of.Admit)
 ```
 
 
-# Data Exploration
+ 
 ## Check for correlations 
-The dataset is examined for correlations among the different attributes. There seems to a be strong correlations (>50%) between all of the features, such as GRE. Score, TOEFL. Score, University. Rating, SOP, LOR, CGPA and Research. The boxplot on the important feature reveal a linear relationship with these features. This is an interesting trend, because many of these characteristics have confounding effects or colinearity that exist with them. For instance, a person scoring high in GRE has high probability of scoring high in TOEFL and potentially wrote a worthy statemnent of purpose. Therefore, it is essential to examinte partial correlation coefficients of these attributes on the admisssion chances.
+The dataset is examined for correlations among the different features. There seems to a be strong correlation (>50%) between all of the features, such as GRE. Score, TOEFL. Score, University. Rating, SOP, LOR, CGPA and Research. The boxplot on the important features reveals a positive relationship. This is an interesting trend, because many of these characteristics have confounding effects or colinearity that exist with them. For instance, a person scoring high in GRE has a high probability of scoring high in TOEFL and potentially writing a worthy statement of purpose. Therefore, it is essential to examine partial correlation coefficients of these features on the admisssion chances.
 
-```{r}
+
+
+```{r correlation_analysis}
 # Converting the data into matrix format for conduction correlation analysis
 data.matrix(adm)->adm_mat 
 # plotting the hrent matrix results
@@ -151,11 +160,14 @@ plot_correlation(adm_mat)
 corrplot(cor(adm_mat), method = "square") 
 ```
 
+
+
+
 ## Visualizing the relationship 
-This step further explores the relationship by visualizing the spread of the attributes and presenting the relationship between combination of attributes in influencing the admission rates. I explore the impacts of TOEFL. Score, GRE.Score and CGPA on Admission grouped by University Rating. The trend is linear and there is strong evidence that these is positively related to the admission rates and the requirements vary with Universities.
+This step further explores the relationship by visualizing the spread of the features and presents the relationship between combination of features in influencing the admission rates. I explore the impacts of TOEFL. Score, GRE.Score and CGPA on Admission grouped by University Rating. The trend appears to be linear and there is strong evidence that these features are positively related to the admission rates, however their magnitudes vary by Universities.
 
 
-```{r}
+```{r boxplots_features}
 adm%>% 
   ggplot(aes(x=TOEFL.Score,y=Chance.of.Admit, fill=factor(University.Rating))) +
   geom_boxplot() +theme_bw()+
@@ -178,18 +190,18 @@ adm%>%
 
 
 ## Partial correlation coefficient
-Beyond the correlation coefficients, the partial correlations reveal the influence of invidual attribute to our dependent varaible of interest. Furthermore, partial correlation ensures that the confounding effects of variables are eliminated. This analysis show that the SOP and University.Rating had a minor influence when partial correlation values are considered. Based on these findings SOP, University.Rating will be cleansed from our datasets before our modeling efforts.
-```{r}
+Beyond the correlation coefficients, the partial correlations reveal the influence of individual attributes to the dependent variables of interest. Furthermore, partial correlation ensures that the confounding effects that exist in the variables are eliminated. This probability values from the partial correlation coefficient,  shows that the SOP and University.Rating had no influence when partial correlation values were considered (p>0.05). Based on these findings,  SOP and 'University.Rating' features will be cleansed from our dataset before the model development.
+```{r partialcor}
 partials=pcor(adm_mat) # Conducting partial correlation analysis
 print("Partial Correlations for the Dependent Variable: Rent")
 Estimates=data.frame(partials$estimate[,7:8])
 P.values=data.frame(partials$p.value[, 7:8])
 # printing the results
-kable((Estimates), format = "markdown", digits=2, 
-      caption="Partial correlations  of the input dataset attributes") 
+kable((Estimates), format = "pandoc", digits=2, 
+      caption="Partial correlations  of the input dataset features") 
 
-kable((P.values), format = "markdown", digits=2, 
-      caption="Probability values  of the input dataset attributes") 
+kable((P.values), format = "pandoc", digits=2, 
+      caption="Probability values  of the input dataset features") 
 
 
 ```
@@ -198,20 +210,21 @@ kable((P.values), format = "markdown", digits=2,
 
 
 
-# Data Preparation for Modeling
-
-##Data Cleansing
-Based on the partial correlation coefficient analysis, the SOP and the University Rating features are removed from the dataset.
-```{r}
-adm%>%dplyr::select(-SOP, -University.Rating)->admfea # data cleansed after removing SOP
+# Model Development
+## Data Cleansing
+Based on the partial correlation coefficient analysis, the SOP and the University Rating features are removed from the dataset. Only this dataset with reduced features will be further used for all of the modeling efforts.
+```{r data_cleansing}
+# data cleansed after removing SOP
+adm%>%dplyr::select(-SOP, -University.Rating)->admfea 
 ```
 
 
 
 ## Splitting data into training and validation datasets.
-The data is split into two datasets. One for training and validation. The training dataset will be used for model development and the validation dataset will only be used for validation of the model as a final step. Twenty percent of the cleansed data was chosen as the validation dataset at random (318) and the rest (82) was saved as the training dataset. The attributes selected were GRE.Score, TOEFL.Score, University.Rating, LOR, CGPA and Research 
+The data is split into two datasets. One for training and validation. The training dataset will be used for model development and the validation dataset will only be used for validation of the model as a final step. Fifty percent of the cleansed data was chosen as the validation dataset at random (318) and the rest (82) was saved as the training dataset. This proportion was chosen based on the strength of the features and their potential relationship with the admission rates. The features selected were GRE.Score, TOEFL.Score, University.Rating, LOR, CGPA and Research 
 
-```{r}
+```{r data_splitting}
+set.seed(1, sample.kind = "Rounding")
 test_indices=createDataPartition(admfea$Chance.of.Admit, 
                                  times=1, 
                                  p=0.5, # portion of data split into test
@@ -220,13 +233,26 @@ admfea[-test_indices,]->traindf # dataset reserved for training
 admfea[test_indices,]->valdf # dataset held for validation
 ```
 
-
-# Approach and Model Development
-
-From the data types, boxplots and intial data exploration, it is evident that this is a regression problem. Accordingly, regression based modeling solutions will be explored for model development. Initially, a general linear model will be built using all of the features in the datasets. Following this a feature reduction step will be performed for the linear models using a Stepwise regression. A backward and foward propagated stepwise regression will be performed and the model that exhibits the lowest AIC score will be selected. The AIC refers to the Akaike Information Criteria that defines the performance of the model chosen through a penalization procedure.
+## Model Performance Metrics
+The performance of the models are evaluated through two metrics. First, the Root mean square error (RMSE) and second with R2, coefficient of determination, between the acutals and predicted values.
 
 
-```{r warning=F}
+RMSE
+$$ RMSE = \sqrt{\frac{1}{n}\Sigma_{i=1}^{n}{\Big(\frac{yhat -y}{\sigma_i}\Big)^2}} $$
+
+
+
+where, yhat is the predicted value of y, y is the actual value, n is the number of samples.  
+
+
+
+# Results
+## Approach and Model Development
+From the datatype of the dependent variable and intial data exploration, it is evident that this is a regression problem. Accordingly, regression based modeling solutions will be explored for model development. Initially, a general linear model will be built using all of the features in the dataset. Following this a feature reduction step will be performed for the linear models using a stepwise regression. A backward and foward propagated stepwise regression will be performed and the model that exhibits the lowest AIC score will be selected. The AIC refers to the Akaike Information Criteria that defines the performance of the model chosen through a penalization procedure.
+
+## Tuning the parameters
+This section of the code was run for selecting the optimized parmeters for the Rborist. The predFixed parameter (mtry in RandomForest) and the minNode size model parameters are checked. Given the limitation of the resources, this code is commented out. 
+```{r tuning_demo, warning=F}
 
 # cl=makePSOCKcluster(detectCores())
 # registerDoParallel(cl)
@@ -251,14 +277,20 @@ From the data types, boxplots and intial data exploration, it is evident that th
 
 
 ## Linear Model
-```{r}
-mod.lm=lm(Chance.of.Admit~., data=traindf)
+The general linear model considers Chance.of.Admit as the dependent variable and all of the other features as the independent variables. The linear model summary showed that the GRE and TOEFL scores were not significantly correlated with the predicted variable. This seems unreasonable and potentially confounding or multicolinearity effects are masking their effects. Therefore, a stepwise regression procedure was implemented to identify the most influential factors. The results revealed that Chance.of.Admit ~ GRE.Score + TOEFL.Score + LOR + CGPA were chosen as the factors for the model. Accordingly, a lm.model.step was constructed. Note that the R2 values were similar on both of the models.
+
+```{r glm}
+#General linear model
+mod.lm=lm(Chance.of.Admit~., data=traindf) 
+summary(mod.lm)
+#predicting results from the model
 pred.lm=predict(mod.lm, newdata=valdf)
 RMSE(pred.lm, valdf$Chance.of.Admit)
 
+#Stepwise Regression procedure
 stepAIC(mod.lm, direction="both")
 
-
+#Predicting results from stepwise regression
 mod.lm.step=lm(Chance.of.Admit~GRE.Score+
                  TOEFL.Score+LOR+CGPA, data=traindf)
 summary(mod.lm.step)
@@ -269,102 +301,99 @@ summary(mod.lm.step)
 
 
 ## Machine Learning Models
-```{r}
-knitr::opts_chunk$set(cache=T)
- 
-set.seed(1)
- 
-cl=makePSOCKcluster(detectCores()-1)
-registerDoParallel(cl)
+For machine learning, the following models were chosen: Rborist, which is a fast implementation of the random forest, k-nearest neighbours, neural net implmentation of glm (glmnet), gradient boost algorithm (xgbLinear), bayesian regularized neural network (brnn) and ridge regression. All of these models were run in the CareEnsemble package. This packages allows simulataneous runs of various ML algorithms, collect and integrate the results and above all, conducts an ensemble evaluation of the model results based on their performance. In this case, the RMSE will be used to evaluate the performance of the models by defaults and the results are  weighted according to the model RMSE values. 
 
-my.con=trainControl(method="cv", number=3,
+
+```{r MachineLearningModels}
+set.seed(1, sample.kind = "Rounding")
+ 
+cl=makePSOCKcluster(detectCores()-1) #setting up clusters for parallel processing
+registerDoParallel(cl) # register the clusters for parellel processing
+
+my.con=trainControl(method="cv", # choose cross validation
+                    number=3, # number of times the process is run
                     savePredictions = "final", allowParallel = T)
 models=caretList(Chance.of.Admit~., data=traindf,
 trainControl=my.con, 
-methodList = c("Rborist",  
+methodList = c("Rborist",  # list of ML models chosen
                "knn", 
                "glmnet",
                "xgbLinear",
                "brnn", 
                "ridge"), 
-continue_on_fail = T)
+continue_on_fail = T) # making sure all models are running without error
 models$xgbLinear
 models$knn
 models$Rborist
 models$glmnet
 models$brnn
 stopCluster(cl)
-varImp(models$Rborist)
+registerDoSEQ()
+rm(cl) # removing cluster
+varImp(models$Rborist) # variable importance for Rborist
 varImp(models$glmnet)
 
 
+
+
 ```
 
 
-## Model with Reduced Features
-```{r}
-# traindf%>%dplyr::select(-Research, -SOP)->traindf_red
-# cl=makePSOCKcluster(detectCores()-1)
-# registerDoParallel(cl)
-# models=caretList(Chance.of.Admit~., data=traindf_red,
-# trainControl=my.con, 
-# methodList = c("Rborist",  
-#                "knn", 
-#                "glmnet",
-#                "xgbLinear",
-#                "brnn"), 
-# continue_on_fail = T)
-# models$xgbLinear
-# models$knn
-# models$Rborist
-# models$glmnet
-# models$brnn
-# varImp(models$Rborist)
-# varImp(models$glmnet)
-```
+
+
 
 
 
 ## Feature Reduction 
-```{r}
-set.seed(1)
+The varImp procedure from the ensemble reveals different feature importance based on the model. This step attempts to explore whether a feature reduction is possible to achieve without compromising the performance of the model using the random Forest function. A recursive feature reduction method is implemented to check the feature reduction opportunities.The recursive feature eliminated Research feature from the modelo. Since the ensemble of models prefer to have different input features, all features were left in the model.
+
+```{r feature_reduction}
+set.seed(1, sample.kind = "Rounding")
+
 cl=makePSOCKcluster(detectCores()-1)
 registerDoParallel(cl)
  
-ctrl=rfeControl(functions = rfFuncs,
-           method = "cv",
-           number = 2,
+ctrl=rfeControl(functions = rfFuncs, #random forest function 
+           method = "cv", # cross validation
+           number = 2, # times
            verbose = F)
-subsets=c(1:6)
-lmProfile=rfe(traindf[,-6], traindf[,6], sizes=subsets, rfeControl=ctrl)
+subsets=c(1:5)
+registerDoSEQ() # avoid warning of parallel clusters not existing
+lmProfile=rfe(as.matrix(traindf[,-6]), 
+              as.matrix(traindf[,6]), 
+              sizes=subsets, 
+              rfeControl=ctrl) # recursive feature elimination
+
 lmProfile
 plot(lmProfile)
 ```
 
+The lmProfile chose 4 models. Nonetheless, owing to multiple models involved in the ensemble, I have chosen to include all five features in the model.
 
 
+## Cross validation 
+The following plot demonstrates the performance of the machine learning models with the cross-validation dataset. The brnn and glmnet both registered the lowest RMSE values in this step. The knn model registerd the highest RMSE value. Glmnet which is a form of the general linear model outperformed all other models in the cross-validation.
 
+```{r cross_validation_results}
 
-
-
-
-
-
-
-
-
-```{r}
  cl=makePSOCKcluster(detectCores()-1)
  registerDoParallel(cl)
+ #retrieve resamples from cross validation
  resamples<-resamples(models)
  dotplot(resamples, metric="RMSE")
+ summary(resamples)
 
 ```
-# Results
-```{r}
+
+## Ensemble models
+Ensembling is a technique where the model results are weighed according to their performance. The caretEnsemble function performs this step and we can predict the performance of the ensemble models with the cross-validation dataset. The performance results are similar to those found from the individual models. 
+
+```{r ensemble_output, warning=F}
 cl=makePSOCKcluster(detectCores())
 registerDoParallel(cl)
-ens=caretEnsemble(models, metric="RMSE", trControl=my.con)
+# 
+ens=caretEnsemble(models, metric="RMSE", 
+                  trControl=my.con) # Run Ensemble model to gather the best result
 summary(ens)
 plot(ens)
 
@@ -372,38 +401,86 @@ plot(ens)
 ```
 
 
-#Validation
+## Validation
+In this step, the model are evaluated for their performance against a new and independent dataset. The models are used to predict the admission probabilities of the students with the validation dataset which was reserved from participating in the model developent process. The actual values of the admission rates were compared to the predicted values from various models. Both RMSE an the R2 values were evaluated. 
 
-In this step, the model are evaluated for their performance. The models are used to predict the admission probabilities of the students with the validation dataset which was reserved from participating in the model developent process. The actual values of the admission rates were compared to the predicted values from various models. Both RMSE an the R2 values were evaluated. 
 
+```{r validation_results}
+######### Results- Validation ############
 
-```{r}
 #Prediction from Linear model 
 pred.lm.step=predict(mod.lm.step, newdata = valdf) 
 
-#Predicted from Rborist 
+#Predicted from each ML model
 
  predicted.Rborist=predict(models$Rborist, newdata=valdf)
+ predicted.knn=predict(models$knn, newdata=valdf)
+ predicted.glmnet=predict(models$glmnet, newdata=valdf)
+ predicted.xgbLinear=predict(models$xgbLinear, newdata=valdf)
+ predicted.brnn=predict(models$brnn, newdata=valdf)
+ predicted.ridge=predict(models$ridge, newdata=valdf)
+ 
+ 
+ 
  
 #Prediction from Ensemble of the models
  predicted.ens=predict(ens, newdata=valdf)
  
- 
+  
+ # Construct the table to output th results.
  data.frame(Rborist=RMSE(predicted.Rborist, valdf$Chance.of.Admit), 
             Ensemble=RMSE(predicted.ens, valdf$Chance.of.Admit),
-            Linear=RMSE(pred.lm.step, valdf$Chance.of.Admit))
+            Linear=RMSE(pred.lm.step, valdf$Chance.of.Admit))->rmses
  
  data.frame(Rborist=cor(predicted.Rborist, valdf$Chance.of.Admit), 
             Ensemble=cor(predicted.ens, valdf$Chance.of.Admit),
-            Linear=cor(pred.lm.step, valdf$Chance.of.Admit))
+            Linear=cor(pred.lm.step, valdf$Chance.of.Admit))->r2s
  
+ Results=data_frame(Model="Linear-Stepwise-Selected", 
+                    RMSE=round(RMSE(pred.lm.step, valdf$Chance.of.Admit), 3), 
+                    R2=round(cor(pred.lm.step, valdf$Chance.of.Admit), 3))
+ 
+
+Results[2,]=list(Model="knn",
+                    RMSE=round(RMSE(predicted.knn, valdf$Chance.of.Admit), 3), 
+                    R2=round(cor(predicted.knn, valdf$Chance.of.Admit), 3))
+Results[3,]=list(Model="GLMnet", 
+                    RMSE=round(RMSE(predicted.glmnet, valdf$Chance.of.Admit), 3), 
+                    R2=round(cor(predicted.glmnet, valdf$Chance.of.Admit), 3))
+
+Results[4,]=list( Model="XGBLinear", 
+                    RMSE=round(RMSE(predicted.xgbLinear, valdf$Chance.of.Admit), 3), 
+                    R2=round(cor(predicted.xgbLinear, valdf$Chance.of.Admit), 3))
+Results[5,]=list(Model="brnn", 
+                    RMSE=round(RMSE(predicted.brnn, valdf$Chance.of.Admit), 3), 
+                    R2=round(cor(predicted.brnn, valdf$Chance.of.Admit), 3))
+Results[6,]= list(Model="Ridge Regression", 
+                    RMSE=round(RMSE(predicted.ridge, valdf$Chance.of.Admit), 3), 
+                    R2=round(cor(predicted.ridge, valdf$Chance.of.Admit), 3))
+
+Results[7,]= list(Model="Ensemble", 
+                    RMSE=round(RMSE(predicted.ens, valdf$Chance.of.Admit), 3), 
+                    R2=round(cor(predicted.ens, valdf$Chance.of.Admit), 3))
+Results[8,]=list(Model="Rborist", 
+                    RMSE=round(RMSE(predicted.Rborist, valdf$Chance.of.Admit), 3), 
+                    R2=round(cor(predicted.Rborist, valdf$Chance.of.Admit), 3))
+ 
+
+
+ 
+kable(Results, format="pandoc", 
+      digits=3, caption = "Performance of the different models: RMSE and R2 values" ) 
+
+Results%>% ggplot(aes(reorder(Model, -RMSE), RMSE, fill=Model))+geom_bar(stat="identity")+theme_bw()+
+  theme(axis.text.x = element_text(angle=90))+xlab("Model")
  
 ```
 
 
 # Conclusion
+Comparison was made between a linear regression model and a ensemble technique with machine learning algorithms for their abilities to predict the admission probability of applicants to US graduate schools. The applicant characteristics such as GRE.Score, TOEFL.Score, CGPA, LOR and SOP were positively correlated with the admission probabilities. GLMnet outperformed all of the other models, with a RMSE of 0.065 and a R2 value of 0.887. This model was closely followed by Ridge regression and Ensemble. It is clear that, in this case, invidividual models can perform better than the ensemble technique.
 
-Comparison was made between a linear regression model and a ensemble technique with machine learning algorithms for their abilities to predict the admission probability of applicants to US graduate schools. The applicant characteristics such as GRE.Score, TOEFL.Score, CGPA, LOR and SOP were positively correlated with the admission probabilities. Both linear regression and an ensemble of maching learning algorithms both predicted the outcomes with great accuracy (RME =0.065 and R2 of 0.88). For this given problem, either of the approaches will work. Nevertheless, owing to the simplicy of linear model, for practical purposes, the linear model approach is favored.
-
+## Limitations
+Owing to the limited sample sizes, this model has its' limitations. Tuning of parameters for invidividual models can offer opportunity to improve the performance of the models.
  
  

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.6.11)  19 JUN 2020 12:44
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.6.11)  19 JUN 2020 22:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -527,56 +527,64 @@ LaTeX Font Info:    Trying to load font information for T1+phv on input line 20
 4.
 (/Users/aru/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1phv.fd
 File: t1phv.fd 2020/03/25 scalable font definitions for T1/phv.
-) (./USGradAdmission.toc)
+) (./USGradAdmission.toc [1
+
+{/Users/aru/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write4
 \openout4 = `USGradAdmission.toc'.
 
-[1
 
-{/Users/aru/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-Package xcolor Warning: Incompatible color definition on input line 295.
+Package xcolor Warning: Incompatible color definition on input line 284.
 
 LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 2
-96.
+85.
 (/Users/aru/Library/TinyTeX/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 297.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 287.
 
-Package xcolor Warning: Incompatible color definition on input line 301.
-
-
-Package xcolor Warning: Incompatible color definition on input line 301.
+Package xcolor Warning: Incompatible color definition on input line 289.
 
 
-Package xcolor Warning: Incompatible color definition on input line 317.
+Package xcolor Warning: Incompatible color definition on input line 289.
 
 
-Package xcolor Warning: Incompatible color definition on input line 321.
+Package xcolor Warning: Incompatible color definition on input line 306.
 
 
-Package xcolor Warning: Incompatible color definition on input line 321.
+Package xcolor Warning: Incompatible color definition on input line 310.
 
 
-Package xcolor Warning: Incompatible color definition on input line 327.
+Package xcolor Warning: Incompatible color definition on input line 310.
 
 
-Package xcolor Warning: Incompatible color definition on input line 331.
+Package xcolor Warning: Incompatible color definition on input line 314.
 
 
-Package xcolor Warning: Incompatible color definition on input line 331.
+Package xcolor Warning: Incompatible color definition on input line 319.
+
+
+Package xcolor Warning: Incompatible color definition on input line 319.
 
 [2]
 
-Package xcolor Warning: Incompatible color definition on input line 348.
+Package xcolor Warning: Incompatible color definition on input line 330.
 
 
-Package xcolor Warning: Incompatible color definition on input line 352.
+Package xcolor Warning: Incompatible color definition on input line 334.
 
 
-Package xcolor Warning: Incompatible color definition on input line 352.
+Package xcolor Warning: Incompatible color definition on input line 334.
+
+
+Package xcolor Warning: Incompatible color definition on input line 340.
+
+
+Package xcolor Warning: Incompatible color definition on input line 344.
+
+
+Package xcolor Warning: Incompatible color definition on input line 344.
 
 
 Package xcolor Warning: Incompatible color definition on input line 358.
@@ -588,571 +596,636 @@ Package xcolor Warning: Incompatible color definition on input line 362.
 Package xcolor Warning: Incompatible color definition on input line 362.
 
 
-Package xcolor Warning: Incompatible color definition on input line 388.
+Package xcolor Warning: Incompatible color definition on input line 368.
 
 
-Package xcolor Warning: Incompatible color definition on input line 392.
+Package xcolor Warning: Incompatible color definition on input line 372.
 
 
-Package xcolor Warning: Incompatible color definition on input line 392.
-
-<USGradAdmission_files/figure-latex/unnamed-chunk-3-1.pdf, id=15, 469.755pt x 3
-25.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-3-1.pdf Graphic file (ty
-pe pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-3-1.p
-df  used on input line 398.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 398--399
-[][] 
- []
+Package xcolor Warning: Incompatible color definition on input line 372.
 
 
-Package xcolor Warning: Incompatible color definition on input line 400.
+Package xcolor Warning: Incompatible color definition on input line 398.
 
 [3]
 
+Package xcolor Warning: Incompatible color definition on input line 402.
+
+
+Package xcolor Warning: Incompatible color definition on input line 402.
+
+<USGradAdmission_files/figure-latex/exploratory_analysis-1.pdf, id=18, 469.755p
+t x 325.215pt>
+File: USGradAdmission_files/figure-latex/exploratory_analysis-1.pdf Graphic fil
+e (type pdf)
+<use USGradAdmission_files/figure-latex/exploratory_analysis-1.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/exploratory_analysi
+s-1.pdf  used on input line 404.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 404--405
+[][] 
+ []
+
+
 Package xcolor Warning: Incompatible color definition on input line 406.
 
 
-Package xcolor Warning: Incompatible color definition on input line 406.
+Package xcolor Warning: Incompatible color definition on input line 412.
 
-<USGradAdmission_files/figure-latex/unnamed-chunk-3-2.pdf, id=19, 469.755pt x 3
-25.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-3-2.pdf Graphic file (ty
-pe pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-3-2.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-3-2.p
-df  used on input line 408.
+
+Package xcolor Warning: Incompatible color definition on input line 412.
+
+<USGradAdmission_files/figure-latex/exploratory_analysis-2.pdf, id=19, 469.755p
+t x 325.215pt>
+File: USGradAdmission_files/figure-latex/exploratory_analysis-2.pdf Graphic fil
+e (type pdf)
+<use USGradAdmission_files/figure-latex/exploratory_analysis-2.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/exploratory_analysi
+s-2.pdf  used on input line 414.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 408--409
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 414--415
 [][] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 410.
+Package xcolor Warning: Incompatible color definition on input line 416.
 
-[4 <./USGradAdmission_files/figure-latex/unnamed-chunk-3-1.pdf>]
+[4 <./USGradAdmission_files/figure-latex/exploratory_analysis-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 417.
+Package xcolor Warning: Incompatible color definition on input line 425.
 
 
-Package xcolor Warning: Incompatible color definition on input line 417.
+Package xcolor Warning: Incompatible color definition on input line 425.
 
-<USGradAdmission_files/figure-latex/unnamed-chunk-3-3.pdf, id=28, 469.755pt x 3
-25.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-3-3.pdf Graphic file (ty
-pe pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-3-3.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-3-3.p
-df  used on input line 419.
+<USGradAdmission_files/figure-latex/exploratory_analysis-3.pdf, id=28, 469.755p
+t x 325.215pt>
+File: USGradAdmission_files/figure-latex/exploratory_analysis-3.pdf Graphic fil
+e (type pdf)
+<use USGradAdmission_files/figure-latex/exploratory_analysis-3.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/exploratory_analysi
+s-3.pdf  used on input line 427.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 419--420
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 427--428
 [][] 
  []
 
-[5 <./USGradAdmission_files/figure-latex/unnamed-chunk-3-2.pdf>]
+[5 <./USGradAdmission_files/figure-latex/exploratory_analysis-2.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 435.
-
-
-Package xcolor Warning: Incompatible color definition on input line 439.
+Package xcolor Warning: Incompatible color definition on input line 443.
 
 
-Package xcolor Warning: Incompatible color definition on input line 439.
+Package xcolor Warning: Incompatible color definition on input line 447.
 
 
-Package xcolor Warning: Incompatible color definition on input line 445.
+Package xcolor Warning: Incompatible color definition on input line 447.
 
 
-Package xcolor Warning: Incompatible color definition on input line 467.
+Package xcolor Warning: Incompatible color definition on input line 453.
 
 
-Package xcolor Warning: Incompatible color definition on input line 467.
+Package xcolor Warning: Incompatible color definition on input line 476.
 
 
-Package xcolor Warning: Incompatible color definition on input line 467.
-
-[6 <./USGradAdmission_files/figure-latex/unnamed-chunk-3-3.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 467.
+Package xcolor Warning: Incompatible color definition on input line 476.
 
 
-Package xcolor Warning: Incompatible color definition on input line 467.
+Package xcolor Warning: Incompatible color definition on input line 476.
+
+[6 <./USGradAdmission_files/figure-latex/exploratory_analysis-3.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 476.
 
 
-Package xcolor Warning: Incompatible color definition on input line 494.
+Package xcolor Warning: Incompatible color definition on input line 476.
 
 
-Package xcolor Warning: Incompatible color definition on input line 501.
+Package xcolor Warning: Incompatible color definition on input line 500.
 
 
-Package xcolor Warning: Incompatible color definition on input line 501.
+Package xcolor Warning: Incompatible color definition on input line 507.
 
-<USGradAdmission_files/figure-latex/unnamed-chunk-5-1.pdf, id=49, 469.755pt x 3
-25.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-5-1.pdf Graphic file (ty
-pe pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-5-1.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-5-1.p
-df  used on input line 503.
+
+Package xcolor Warning: Incompatible color definition on input line 507.
+
+<USGradAdmission_files/figure-latex/correlation_analysis-1.pdf, id=49, 469.755p
+t x 325.215pt>
+File: USGradAdmission_files/figure-latex/correlation_analysis-1.pdf Graphic fil
+e (type pdf)
+<use USGradAdmission_files/figure-latex/correlation_analysis-1.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/correlation_analysi
+s-1.pdf  used on input line 509.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 503--504
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 509--510
 [][] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 505.
+Package xcolor Warning: Incompatible color definition on input line 511.
 
 [7]
 
-Package xcolor Warning: Incompatible color definition on input line 510.
+Package xcolor Warning: Incompatible color definition on input line 516.
 
 
-Package xcolor Warning: Incompatible color definition on input line 510.
+Package xcolor Warning: Incompatible color definition on input line 516.
 
-<USGradAdmission_files/figure-latex/unnamed-chunk-5-2.pdf, id=54, 469.755pt x 3
-25.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-5-2.pdf Graphic file (ty
-pe pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-5-2.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-5-2.p
-df  used on input line 512.
+<USGradAdmission_files/figure-latex/correlation_analysis-2.pdf, id=54, 469.755p
+t x 325.215pt>
+File: USGradAdmission_files/figure-latex/correlation_analysis-2.pdf Graphic fil
+e (type pdf)
+<use USGradAdmission_files/figure-latex/correlation_analysis-2.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/correlation_analysi
+s-2.pdf  used on input line 518.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 512--513
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 518--519
 [][] 
  []
 
-[8 <./USGradAdmission_files/figure-latex/unnamed-chunk-5-1.pdf>]
+[8 <./USGradAdmission_files/figure-latex/correlation_analysis-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 526.
-
-
-Package xcolor Warning: Incompatible color definition on input line 533.
+Package xcolor Warning: Incompatible color definition on input line 532.
 
 
-Package xcolor Warning: Incompatible color definition on input line 533.
+Package xcolor Warning: Incompatible color definition on input line 539.
 
-<USGradAdmission_files/figure-latex/unnamed-chunk-6-1.pdf, id=64, 469.755pt x 3
-25.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-6-1.pdf Graphic file (ty
-pe pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-6-1.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-6-1.p
-df  used on input line 535.
+
+Package xcolor Warning: Incompatible color definition on input line 539.
+
+<USGradAdmission_files/figure-latex/boxplots_features-1.pdf, id=64, 469.755pt x
+ 325.215pt>
+File: USGradAdmission_files/figure-latex/boxplots_features-1.pdf Graphic file (
+type pdf)
+<use USGradAdmission_files/figure-latex/boxplots_features-1.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/boxplots_features-1
+.pdf  used on input line 541.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 535--536
-[][] 
- []
-
-
-Package xcolor Warning: Incompatible color definition on input line 537.
-
-[9 <./USGradAdmission_files/figure-latex/unnamed-chunk-5-2.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 545.
-
-
-Package xcolor Warning: Incompatible color definition on input line 545.
-
-<USGradAdmission_files/figure-latex/unnamed-chunk-6-2.pdf, id=73, 469.755pt x 3
-25.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-6-2.pdf Graphic file (ty
-pe pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-6-2.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-6-2.p
-df  used on input line 547.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 547--548
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 541--542
 [][] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 549.
+Package xcolor Warning: Incompatible color definition on input line 543.
 
-[10 <./USGradAdmission_files/figure-latex/unnamed-chunk-6-1.pdf>]
+[9 <./USGradAdmission_files/figure-latex/correlation_analysis-2.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 556.
+Package xcolor Warning: Incompatible color definition on input line 551.
 
 
-Package xcolor Warning: Incompatible color definition on input line 556.
+Package xcolor Warning: Incompatible color definition on input line 551.
 
-<USGradAdmission_files/figure-latex/unnamed-chunk-6-3.pdf, id=82, 469.755pt x 3
-25.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-6-3.pdf Graphic file (ty
-pe pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-6-3.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-6-3.p
-df  used on input line 558.
+<USGradAdmission_files/figure-latex/boxplots_features-2.pdf, id=73, 469.755pt x
+ 325.215pt>
+File: USGradAdmission_files/figure-latex/boxplots_features-2.pdf Graphic file (
+type pdf)
+<use USGradAdmission_files/figure-latex/boxplots_features-2.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/boxplots_features-2
+.pdf  used on input line 553.
 (pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
 
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 558--559
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 553--554
 [][] 
  []
 
-[11 <./USGradAdmission_files/figure-latex/unnamed-chunk-6-2.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 572.
+Package xcolor Warning: Incompatible color definition on input line 555.
 
+[10 <./USGradAdmission_files/figure-latex/boxplots_features-1.pdf>]
 
-Package xcolor Warning: Incompatible color definition on input line 577.
-
-
-Package xcolor Warning: Incompatible color definition on input line 577.
+Package xcolor Warning: Incompatible color definition on input line 562.
 
 
-Package xcolor Warning: Incompatible color definition on input line 583.
+Package xcolor Warning: Incompatible color definition on input line 562.
+
+<USGradAdmission_files/figure-latex/boxplots_features-3.pdf, id=82, 469.755pt x
+ 325.215pt>
+File: USGradAdmission_files/figure-latex/boxplots_features-3.pdf Graphic file (
+type pdf)
+<use USGradAdmission_files/figure-latex/boxplots_features-3.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/boxplots_features-3
+.pdf  used on input line 564.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 564--565
+[][] 
+ []
+
+[11 <./USGradAdmission_files/figure-latex/boxplots_features-2.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 580.
+
+
+Package xcolor Warning: Incompatible color definition on input line 585.
+
+
+Package xcolor Warning: Incompatible color definition on input line 585.
 
 
 Package xcolor Warning: Incompatible color definition on input line 591.
 
 
-Package xcolor Warning: Incompatible color definition on input line 591.
-
-[12 <./USGradAdmission_files/figure-latex/unnamed-chunk-6-3.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 609.
+Package xcolor Warning: Incompatible color definition on input line 599.
 
 
-Package xcolor Warning: Incompatible color definition on input line 614.
+Package xcolor Warning: Incompatible color definition on input line 599.
+
+[12 <./USGradAdmission_files/figure-latex/boxplots_features-3.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 623.
 
 
-Package xcolor Warning: Incompatible color definition on input line 614.
+Package xcolor Warning: Incompatible color definition on input line 628.
 
 
-Package xcolor Warning: Incompatible color definition on input line 640.
+Package xcolor Warning: Incompatible color definition on input line 628.
 
 
-Package xcolor Warning: Incompatible color definition on input line 644.
+Package xcolor Warning: Incompatible color definition on input line 663.
 
 
-Package xcolor Warning: Incompatible color definition on input line 644.
+Package xcolor Warning: Incompatible color definition on input line 668.
 
 
-Package xcolor Warning: Incompatible color definition on input line 658.
+Package xcolor Warning: Incompatible color definition on input line 668.
 
-
-Package xcolor Warning: Incompatible color definition on input line 667.
-
-
-Package xcolor Warning: Incompatible color definition on input line 667.
-
-[13]
 
 Package xcolor Warning: Incompatible color definition on input line 684.
 
+[13]
 
-Package xcolor Warning: Incompatible color definition on input line 705.
-
-
-Package xcolor Warning: Incompatible color definition on input line 705.
+Package xcolor Warning: Incompatible color definition on input line 688.
 
 
-Package xcolor Warning: Incompatible color definition on input line 710.
+Package xcolor Warning: Incompatible color definition on input line 688.
 
 
-Package xcolor Warning: Incompatible color definition on input line 716.
+Package xcolor Warning: Incompatible color definition on input line 695.
 
 
-Package xcolor Warning: Incompatible color definition on input line 716.
+Package xcolor Warning: Incompatible color definition on input line 704.
 
 
-Package xcolor Warning: Incompatible color definition on input line 722.
+Package xcolor Warning: Incompatible color definition on input line 704.
 
 
-Package xcolor Warning: Incompatible color definition on input line 726.
-
-
-Package xcolor Warning: Incompatible color definition on input line 726.
+Package xcolor Warning: Incompatible color definition on input line 752.
 
 [14]
 
-Package xcolor Warning: Incompatible color definition on input line 763.
+Package xcolor Warning: Incompatible color definition on input line 773.
 
 
-Package xcolor Warning: Incompatible color definition on input line 769.
+Package xcolor Warning: Incompatible color definition on input line 773.
 
 
-Package xcolor Warning: Incompatible color definition on input line 769.
+Package xcolor Warning: Incompatible color definition on input line 790.
+
+
+Package xcolor Warning: Incompatible color definition on input line 796.
+
+
+Package xcolor Warning: Incompatible color definition on input line 796.
 
 [15]
 
-Package xcolor Warning: Incompatible color definition on input line 799.
+Package xcolor Warning: Incompatible color definition on input line 823.
 
 
-Package xcolor Warning: Incompatible color definition on input line 820.
+Package xcolor Warning: Incompatible color definition on input line 829.
 
 
-Package xcolor Warning: Incompatible color definition on input line 820.
+Package xcolor Warning: Incompatible color definition on input line 829.
 
 
-Overfull \hbox (288.46669pt too wide) in paragraph at lines 848--848
-[]\T1/cmtt/m/n/10.95 ## [12:44:33] WARNING: amalgamation/../src/objective/regre
+Package xcolor Warning: Incompatible color definition on input line 835.
+
+
+Package xcolor Warning: Incompatible color definition on input line 840.
+
+
+Package xcolor Warning: Incompatible color definition on input line 840.
+
+[16]
+
+Package xcolor Warning: Incompatible color definition on input line 887.
+
+
+Package xcolor Warning: Incompatible color definition on input line 894.
+
+
+Package xcolor Warning: Incompatible color definition on input line 894.
+
+[17]
+
+Package xcolor Warning: Incompatible color definition on input line 936.
+
+
+Package xcolor Warning: Incompatible color definition on input line 940.
+
+
+Package xcolor Warning: Incompatible color definition on input line 940.
+
+
+Package xcolor Warning: Incompatible color definition on input line 947.
+
+
+Package xcolor Warning: Incompatible color definition on input line 965.
+
+
+Package xcolor Warning: Incompatible color definition on input line 965.
+
+
+Overfull \hbox (288.46669pt too wide) in paragraph at lines 992--992
+[]\T1/cmtt/m/n/10.95 ## [22:17:00] WARNING: amalgamation/../src/objective/regre
 ssion_obj.cu:170: reg:linear is now deprecated in favor of reg:squarederror.[] 
 
  []
 
 
-Overfull \hbox (45.15674pt too wide) in paragraph at lines 848--848
+Overfull \hbox (45.15674pt too wide) in paragraph at lines 992--992
 []\T1/cmtt/m/n/10.95 ##   This may not be accurate due to some parameters are o
 nly used in language bindings but[] 
  []
 
 
-Overfull \hbox (28.18163pt too wide) in paragraph at lines 848--848
+Overfull \hbox (28.18163pt too wide) in paragraph at lines 992--992
 []\T1/cmtt/m/n/10.95 ##   passed down to XGBoost core.  Or some parameters are 
 not used but slip through this[] 
  []
 
 
-Overfull \hbox (175.29927pt too wide) in paragraph at lines 848--848
-[]\T1/cmtt/m/n/10.95 ## 1 package is needed for this model and is not installed
-. (elasticnet). Would you like to try to install it now?[] 
- []
-
-
-Package xcolor Warning: Incompatible color definition on input line 850.
-
-[16]
-
-Package xcolor Warning: Incompatible color definition on input line 854.
-
-
-Package xcolor Warning: Incompatible color definition on input line 854.
-
-
-Package xcolor Warning: Incompatible color definition on input line 902.
-
-[17]
-
-Package xcolor Warning: Incompatible color definition on input line 906.
-
-
-Package xcolor Warning: Incompatible color definition on input line 906.
-
-
-Package xcolor Warning: Incompatible color definition on input line 928.
-
-
-Package xcolor Warning: Incompatible color definition on input line 932.
-
-
-Package xcolor Warning: Incompatible color definition on input line 932.
-
-
-Package xcolor Warning: Incompatible color definition on input line 955.
-
-
-Package xcolor Warning: Incompatible color definition on input line 959.
-
-
-Package xcolor Warning: Incompatible color definition on input line 959.
+Package xcolor Warning: Incompatible color definition on input line 994.
 
 [18]
 
-Package xcolor Warning: Incompatible color definition on input line 987.
+Package xcolor Warning: Incompatible color definition on input line 998.
 
 
-Package xcolor Warning: Incompatible color definition on input line 991.
+Package xcolor Warning: Incompatible color definition on input line 998.
 
 
-Package xcolor Warning: Incompatible color definition on input line 991.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1013.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1018.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1018.
+Package xcolor Warning: Incompatible color definition on input line 1046.
 
 [19]
 
-Package xcolor Warning: Incompatible color definition on input line 1031.
+Package xcolor Warning: Incompatible color definition on input line 1050.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1035.
+Package xcolor Warning: Incompatible color definition on input line 1050.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1035.
+Package xcolor Warning: Incompatible color definition on input line 1072.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1052.
+Package xcolor Warning: Incompatible color definition on input line 1076.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1073.
+Package xcolor Warning: Incompatible color definition on input line 1076.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1073.
+Package xcolor Warning: Incompatible color definition on input line 1099.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1078.
+Package xcolor Warning: Incompatible color definition on input line 1103.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1092.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1092.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1092.
+Package xcolor Warning: Incompatible color definition on input line 1103.
 
 [20]
 
-Package xcolor Warning: Incompatible color definition on input line 1092.
+Package xcolor Warning: Incompatible color definition on input line 1131.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1092.
+Package xcolor Warning: Incompatible color definition on input line 1135.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1113.
+Package xcolor Warning: Incompatible color definition on input line 1135.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1117.
+Package xcolor Warning: Incompatible color definition on input line 1157.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1117.
-
-<USGradAdmission_files/figure-latex/unnamed-chunk-14-1.pdf, id=125, 469.755pt x
- 325.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-14-1.pdf Graphic file (t
-ype pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-14-1.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-14-1.
-pdf  used on input line 1119.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 1119--1120
-[][] 
- []
+Package xcolor Warning: Incompatible color definition on input line 1164.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1121.
+Package xcolor Warning: Incompatible color definition on input line 1164.
 
 [21]
-
-Package xcolor Warning: Incompatible color definition on input line 1128.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1128.
-
-<USGradAdmission_files/figure-latex/unnamed-chunk-15-1.pdf, id=129, 469.755pt x
- 325.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-15-1.pdf Graphic file (t
-ype pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-15-1.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-15-1.
-pdf  used on input line 1130.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 1130--1132
-[][]
- []
-
-[22 <./USGradAdmission_files/figure-latex/unnamed-chunk-14-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 1133.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1140.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1140.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1156.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1160.
-
-
-Package xcolor Warning: Incompatible color definition on input line 1160.
-
-<USGradAdmission_files/figure-latex/unnamed-chunk-16-1.pdf, id=138, 469.755pt x
- 325.215pt>
-File: USGradAdmission_files/figure-latex/unnamed-chunk-16-1.pdf Graphic file (t
-ype pdf)
-<use USGradAdmission_files/figure-latex/unnamed-chunk-16-1.pdf>
-Package pdftex.def Info: USGradAdmission_files/figure-latex/unnamed-chunk-16-1.
-pdf  used on input line 1166.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-
-Overfull \hbox (16.99884pt too wide) in paragraph at lines 1166--1167
-[][] 
- []
-
-[23 <./USGradAdmission_files/figure-latex/unnamed-chunk-15-1.pdf>]
 
 Package xcolor Warning: Incompatible color definition on input line 1177.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1189.
+Package xcolor Warning: Incompatible color definition on input line 1181.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1189.
+Package xcolor Warning: Incompatible color definition on input line 1181.
 
 
-Overfull \hbox (288.46669pt too wide) in paragraph at lines 1193--1193
-[]\T1/cmtt/m/n/10.95 ## [12:44:42] WARNING: amalgamation/../src/objective/regre
-ssion_obj.cu:170: reg:linear is now deprecated in favor of reg:squarederror.[] 
+Package xcolor Warning: Incompatible color definition on input line 1206.
 
+
+Package xcolor Warning: Incompatible color definition on input line 1210.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1210.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1217.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1233.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1233.
+
+
+Overfull \hbox (180.95764pt too wide) in paragraph at lines 1238--1238
+[]\T1/cmtt/m/n/10.95 ## Warning in rfout$mse/(var(y) * (n - 1)/n): Recycling ar
+ray of length 1 in vector-array arithmetic is deprecated.[] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 1195.
+Package xcolor Warning: Incompatible color definition on input line 1240.
+
+[22]
+
+Package xcolor Warning: Incompatible color definition on input line 1244.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1201.
+Package xcolor Warning: Incompatible color definition on input line 1244.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1201.
+Package xcolor Warning: Incompatible color definition on input line 1265.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1208.
-
-[24 <./USGradAdmission_files/figure-latex/unnamed-chunk-16-1.pdf>]
-
-Package xcolor Warning: Incompatible color definition on input line 1214.
+Package xcolor Warning: Incompatible color definition on input line 1269.
 
 
-Package xcolor Warning: Incompatible color definition on input line 1214.
+Package xcolor Warning: Incompatible color definition on input line 1269.
+
+<USGradAdmission_files/figure-latex/feature_reduction-1.pdf, id=136, 469.755pt 
+x 325.215pt>
+File: USGradAdmission_files/figure-latex/feature_reduction-1.pdf Graphic file (
+type pdf)
+<use USGradAdmission_files/figure-latex/feature_reduction-1.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/feature_reduction-1
+.pdf  used on input line 1271.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 1271--1272
+[][] 
+ []
+
+[23 <./USGradAdmission_files/figure-latex/feature_reduction-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1286.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1294.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1294.
+
+<USGradAdmission_files/figure-latex/cross_validation_results-1.pdf, id=145, 469
+.755pt x 325.215pt>
+File: USGradAdmission_files/figure-latex/cross_validation_results-1.pdf Graphic
+ file (type pdf)
+<use USGradAdmission_files/figure-latex/cross_validation_results-1.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/cross_validation_re
+sults-1.pdf  used on input line 1296.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 1296--1297
+[][] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 1298.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1302.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1302.
+
+[24 <./USGradAdmission_files/figure-latex/cross_validation_results-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1363.
 
 [25]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1241.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1241.
+
+Package xcolor Warning: Incompatible color definition on input line 1372.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1372.
+
+
+Overfull \hbox (5.54814pt too wide) in paragraph at lines 1387--1387
+[]\T1/cmtt/m/n/10.95 ## The following models were ensembled: Rborist, knn, glmn
+et, xgbLinear, brnn, ridge[] 
+ []
+
+
+Package xcolor Warning: Incompatible color definition on input line 1389.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1393.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1393.
+
+<USGradAdmission_files/figure-latex/ensemble_output-1.pdf, id=159, 469.755pt x 
+325.215pt>
+File: USGradAdmission_files/figure-latex/ensemble_output-1.pdf Graphic file (ty
+pe pdf)
+<use USGradAdmission_files/figure-latex/ensemble_output-1.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/ensemble_output-1.p
+df  used on input line 1395.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 1395--1396
+[][] 
+ []
+
+[26 <./USGradAdmission_files/figure-latex/ensemble_output-1.pdf>]
+
+Package xcolor Warning: Incompatible color definition on input line 1407.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1443.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1443.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1452.
+
+[27]
+
+Package xcolor Warning: Incompatible color definition on input line 1484.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1484.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1508.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1513.
+
+
+Package xcolor Warning: Incompatible color definition on input line 1513.
+
+<USGradAdmission_files/figure-latex/validation_results-1.pdf, id=172, 469.755pt
+ x 325.215pt>
+File: USGradAdmission_files/figure-latex/validation_results-1.pdf Graphic file 
+(type pdf)
+<use USGradAdmission_files/figure-latex/validation_results-1.pdf>
+Package pdftex.def Info: USGradAdmission_files/figure-latex/validation_results-
+1.pdf  used on input line 1515.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Overfull \hbox (16.99884pt too wide) in paragraph at lines 1515--1516
+[][] 
+ []
+
+[28] [29 <./USGradAdmission_files/figure-latex/validation_results-1.pdf>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1543.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1543.
 (./USGradAdmission.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1241.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1241.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1241.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1543.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 1543.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1543.
  ) 
 Here is how much of TeX's memory you used:
- 11878 strings out of 482426
- 174743 string characters out of 5944454
- 435228 words of memory out of 5000000
- 27409 multiletter control sequences out of 15000+600000
- 568544 words of font info for 97 fonts, out of 8000000 for 9000
+ 11906 strings out of 482426
+ 175461 string characters out of 5944454
+ 437479 words of memory out of 5000000
+ 27421 multiletter control sequences out of 15000+600000
+ 573385 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 34i,6n,37p,396b,458s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,7n,37p,437b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
  </Users/aru/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ecit1095.6
 00pk> </Users/aru/Library/TinyTeX/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt109
 5.600pk>{/Users/aru/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}</Us
-ers/aru/Library/TinyTeX/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></Users/
-aru/Library/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></Users/aru/
-Library/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></Users/aru/Libr
-ary/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on USGradAdmission.pdf (25 pages, 250430 bytes).
+ers/aru/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+Users/aru/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+/Users/aru/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+></Users/aru/Library/TinyTeX/texmf-dist/fonts/type1/public/mathpazo/fplmr.pfb><
+/Users/aru/Library/TinyTeX/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></
+Users/aru/Library/TinyTeX/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></User
+s/aru/Library/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></Users/ar
+u/Library/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></Users/aru/Li
+brary/TinyTeX/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on USGradAdmission.pdf (29 pages, 289390 bytes).
 PDF statistics:
- 329 PDF objects out of 1000 (max. 8388607)
- 127 compressed objects within 2 object streams
+ 363 PDF objects out of 1000 (max. 8388607)
+ 154 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

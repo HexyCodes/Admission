@@ -220,21 +220,21 @@ and Machine Learning Algorithms},
 
     \vskip 8.5pt % \small 
 
-\noindent The project develops and compares a linear and a suite of machine
-learning algorithms that predicts the admission probabilty of applicants
-to United States Graduate Schools. The applicant characterisitics and
-academic standings such as, TOEFL scores, GRE scores, Cumulative Grade
-Point Average (CGPA), Letter of Recommendation (LOR) and Statement of
-Purpose are some of the attributes that are used to predict their
-admission probability to universities. A regression based approach was
-used and the dataset was explored for trends, cleansed with relevant
-attributes and models were built using linear regression and machine
-learning algorithm. Training and validation datasets were estbalished at
-a 50:50 proportion at random. Root Mean Square and R2 values were used
-as measures of performance and the results revealed that linear
-regression model and an ensemble of machine learning models both
-predicted the outcomes with the same level of accuracy. The RMSE values
-were at 0.066 with an r2 value of 0.88
+\noindent The project builds and compares linear and suite of machine learning
+algorithms that predict the admission probabilty of applicants to United
+States Graduate Schools. The applicant characterisitics and academic
+standings such as, TOEFL scores, GRE scores, Cumulative Grade Point
+Average (CGPA), Letter of Recommendation (LOR) and Statement of Purpose
+are some of the features that are used to predict their probability of
+university admission. A regression based approach was used and the
+dataset was explored for trends. Dataset was cleansed with relevant
+features and models models. were built using linear regression and a
+machine learning algorithms. Training and validation datasets were
+established at a 50:50 proportion at random. Root Mean Square Error and
+R2 values were used as measures of performance and the results revealed
+that GLMnet achieved a higher level of accuracy compared any other
+models. The RMSE values were at 0.065 with an r2 value of 0.887, better
+than the ensemble or linear regression
 
 
 \vskip 8.5pt \noindent \emph{Keywords}: house rent, machine learning, linear models \par
@@ -258,61 +258,74 @@ were at 0.066 with an r2 value of 0.88
 
 \noindent  
 
-\hypertarget{executive-summary}{%
-\section{Executive Summary}\label{executive-summary}}
-
-This project builds a mathematical model that predicts the house rents
-in selected Brazilian cities.
-
 \hypertarget{objective}{%
 \section{Objective}\label{objective}}
 
-Predict the admission rates in United States Grad School using the
-academic scores of the applicants, and the university rankings. Both
-general linear models and machine learning algorithms will be used and
-their performances will be compared. Root Mean Squarewill be used as the
-measure of performance for the model.
+Predict the admission rates of United States Graduate Schools using the
+academic scores of the applicants and university rankings. Both general
+linear models and machine learning algorithms will be used and their
+performances will be compared. Root Mean Square and R2 will be used as
+the measure of performance for the models.
 
-\#Install and load up the libraries that are required for the analysis
-to run.
+\hypertarget{materials-and-methods}{%
+\section{Materials and Methods}\label{materials-and-methods}}
 
-\hypertarget{load-the-data-that-is-used-for-the-development-of-the-model.}{%
-\section{Load the data that is used for the development of the
-model.}\label{load-the-data-that-is-used-for-the-development-of-the-model.}}
+\hypertarget{input-data}{%
+\subsection{Input Data}\label{input-data}}
 
-The original data is available for public in the following url:
-\url{https://www.kaggle.com/}
-
-Since a direct download from kaggle requires an authentication, the
-whole dataset is uploaded to github account. The data and codes can be
-downloaded from the following github repository.
-\url{https://github.com/HexyCodes/}
-
-This dataset contains, 400 rows of data and 8 attributes.
-
-\#Data characteristics and Summary
+The original data is available for public at the following url:
+www.kaggle.com/mohansacharya/ graduate-admissions Since a direct
+download from kaggle requires an authentication, the whole dataset is
+uploaded to a github account. The data and codes are downloaded from the
+following github repository.
+\url{https://github.com/HexyCodes/Admission.git}. This dataset contains,
+400 rows of data and 8 features.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{adm=}\KeywordTok{read.csv}\NormalTok{(}\StringTok{"~/Documents/Harvard/R/CapStone/Admission/US_grad_admission.csv"}\NormalTok{, }
-             \DataTypeTok{stringsAsFactors =}\NormalTok{ F)}
-\KeywordTok{dim}\NormalTok{(adm) }\CommentTok{# find the dimensions of the data.frame}
+\NormalTok{url=}\StringTok{"https://raw.githubusercontent.com/HexyCodes/Admission/master/US_grad_admission.csv"}
+\NormalTok{adm=}\KeywordTok{read_csv}\NormalTok{(url)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 400   9
+## Parsed with column specification:
+## cols(
+##   `Serial No.` = col_double(),
+##   `GRE Score` = col_double(),
+##   `TOEFL Score` = col_double(),
+##   `University Rating` = col_double(),
+##   SOP = col_double(),
+##   LOR = col_double(),
+##   CGPA = col_double(),
+##   Research = col_double(),
+##   `Chance of Admit` = col_double()
+## )
 \end{verbatim}
 
-\hypertarget{exploratory-data-analysis}{%
-\section{Exploratory Data Analysis}\label{exploratory-data-analysis}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(adm) }\CommentTok{# find the dimensions of the data.frame}
+\end{Highlighting}
+\end{Shaded}
 
-Here the data is analyzed for their summarized characteristics through
-visualization. This step allows us to find the patterns, trends and any
-anamolies if exist in the data. The serial number column has been
-removed to cleanse the data removing unrelated column. This was an
-obvious choice as this will add unncessary noise to the modeling
-process.
+{[}1{]} 400 9
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{colnames}\NormalTok{(adm)=}\KeywordTok{c}\NormalTok{(}\StringTok{"Serial.No"}\NormalTok{, }\StringTok{"GRE.Score"}\NormalTok{, }\StringTok{"TOEFL.Score"}\NormalTok{, }\StringTok{"University.Rating"}\NormalTok{, }
+                \StringTok{"SOP"}\NormalTok{, }\StringTok{"LOR"}\NormalTok{, }\StringTok{"CGPA"}\NormalTok{, }\StringTok{"Research"}\NormalTok{, }\StringTok{"Chance.of.Admit"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exploratory-data-analysis}{%
+\subsection{Exploratory Data Analysis}\label{exploratory-data-analysis}}
+
+In this exploration, the data is analyzed with their summarized
+characteristics and examined through visualization charts. This step
+allows to find the patterns, trends and any anamolies that may exist in
+the data. The serial number column has been removed. This was an obvious
+choice as this would add unncessary noise to the modeling process.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -321,7 +334,7 @@ process.
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "data.frame"
+## [1] "spec_tbl_df" "tbl_df"      "tbl"         "data.frame"
 \end{verbatim}
 
 \begin{Shaded}
@@ -331,18 +344,15 @@ process.
 \end{Shaded}
 
 \begin{verbatim}
-##   Serial.No. GRE.Score TOEFL.Score University.Rating SOP LOR CGPA Research
-## 1          1       337         118                 4 4.5 4.5 9.65        1
-## 2          2       324         107                 4 4.0 4.5 8.87        1
-## 3          3       316         104                 3 3.0 3.5 8.00        1
-## 4          4       322         110                 3 3.5 2.5 8.67        1
-## 5          5       314         103                 2 2.0 3.0 8.21        0
-##   Chance.of.Admit
-## 1            0.92
-## 2            0.76
-## 3            0.72
-## 4            0.80
-## 5            0.65
+## # A tibble: 5 x 9
+##   Serial.No GRE.Score TOEFL.Score University.Rati~   SOP   LOR  CGPA Research
+##       <dbl>     <dbl>       <dbl>            <dbl> <dbl> <dbl> <dbl>    <dbl>
+## 1         1       337         118                4   4.5   4.5  9.65        1
+## 2         2       324         107                4   4     4.5  8.87        1
+## 3         3       316         104                3   3     3.5  8           1
+## 4         4       322         110                3   3.5   2.5  8.67        1
+## 5         5       314         103                2   2     3    8.21        0
+## # ... with 1 more variable: Chance.of.Admit <dbl>
 \end{verbatim}
 
 \begin{Shaded}
@@ -362,7 +372,7 @@ process.
 \end{Shaded}
 
 \begin{verbatim}
-##    Serial.No.      GRE.Score      TOEFL.Score    University.Rating
+##    Serial.No       GRE.Score      TOEFL.Score    University.Rating
 ##  Min.   :  1.0   Min.   :290.0   Min.   : 92.0   Min.   :1.000    
 ##  1st Qu.:100.8   1st Qu.:308.0   1st Qu.:103.0   1st Qu.:2.000    
 ##  Median :200.5   Median :317.0   Median :107.0   Median :3.000    
@@ -387,15 +397,11 @@ process.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{adm}\OperatorTok{%>%}\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Chance.of.Admit))}\OperatorTok{+}\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{bins =} \DecValTok{20}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_bw}\NormalTok{() }
+\NormalTok{adm}\OperatorTok{%>%}\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Chance.of.Admit))}\OperatorTok{+}\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{fill=}\StringTok{"blue"}\NormalTok{) }\OperatorTok{+}\StringTok{ }\KeywordTok{theme_bw}\NormalTok{() }
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Warning: Ignoring unknown parameters: bins
-\end{verbatim}
-
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-3-1.pdf}
+\includegraphics{USGradAdmission_files/figure-latex/exploratory_analysis-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -405,32 +411,34 @@ process.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-3-2.pdf}
+\includegraphics{USGradAdmission_files/figure-latex/exploratory_analysis-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{adm}\OperatorTok{%>%}\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{Serial.No.)->adm }\CommentTok{# Remove Serial number from the daa. }
+\NormalTok{adm}\OperatorTok{%>%}\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{Serial.No)->adm }\CommentTok{# Remove Serial number from the daa. }
+\CommentTok{# distribution all predictors in the data frame}
 \KeywordTok{plot_density}\NormalTok{(adm, }
              \DataTypeTok{geom_density_args =} \KeywordTok{list}\NormalTok{(}\StringTok{"fill"}\NormalTok{=}\StringTok{"blue"}\NormalTok{, }
-                                      \StringTok{"alpha"}\NormalTok{=}\FloatTok{0.6}\NormalTok{)) }\CommentTok{# distribution all predictors in the data frame}
+                                      \StringTok{"alpha"}\NormalTok{=}\FloatTok{0.6}\NormalTok{), }
+             \DataTypeTok{ggtheme =} \KeywordTok{theme_bw}\NormalTok{()) }
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-3-3.pdf}
+\includegraphics{USGradAdmission_files/figure-latex/exploratory_analysis-3.pdf}
 
 \hypertarget{removing-extreme-values}{%
-\section{Removing Extreme values}\label{removing-extreme-values}}
+\subsection{Removing Extreme values}\label{removing-extreme-values}}
 
-Histogram and boxplots of the admission vector indicates a normal
-distribution for all the features. It is a recommended practice to
-examine the dataset for outliers. Therefore, a Inter quantile range
+Histogram and boxplots of the `Chance of Admission' vector indicates a
+normal distribution for all the features. It is a recommended practice
+to examine the dataset for outliers. Therefore, a Inter quantile range
 (IQR) methodology was used to identify the ``proposed outliers''. First,
 the Q1 and Q3 quantile are identified, then the IRQ was calculated as
-teh difference between the Q3 and Q1. The range of values that exist
+the difference between the Q3 and Q1. The range of values that exist
 below the IQR\emph{1.5 or above IQR}1.5 were eliminated for this
-project. From the results only two rows were identified as potential
+project. From the results, only two rows were identified as potential
 outliers. Considering the low occurrence of these values, the dataset is
-being used as such with no removal of outliers.
+being used as such without removal of outliers.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -444,6 +452,7 @@ being used as such with no removal of outliers.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{#Function to check the outliers}
 \NormalTok{IQR.outliers <-}\StringTok{ }\ControlFlowTok{function}\NormalTok{(x) \{}
   \ControlFlowTok{if}\NormalTok{(}\KeywordTok{any}\NormalTok{(}\KeywordTok{is.na}\NormalTok{(x)))}
     \KeywordTok{stop}\NormalTok{(}\StringTok{"x is missing values"}\NormalTok{)}
@@ -461,7 +470,7 @@ being used as such with no removal of outliers.
 \NormalTok{\}}
 
 
-
+\CommentTok{#list of outliers}
 \NormalTok{outliers=}\KeywordTok{IQR.outliers}\NormalTok{(adm}\OperatorTok{$}\NormalTok{Chance.of.Admit)}
 \end{Highlighting}
 \end{Shaded}
@@ -473,22 +482,19 @@ being used as such with no removal of outliers.
 ## 1.115
 \end{verbatim}
 
-\hypertarget{data-exploration}{%
-\section{Data Exploration}\label{data-exploration}}
-
 \hypertarget{check-for-correlations}{%
 \subsection{Check for correlations}\label{check-for-correlations}}
 
-The dataset is examined for correlations among the different attributes.
-There seems to a be strong correlations (\textgreater{}50\%) between all
+The dataset is examined for correlations among the different features.
+There seems to a be strong correlation (\textgreater{}50\%) between all
 of the features, such as GRE. Score, TOEFL. Score, University. Rating,
-SOP, LOR, CGPA and Research. The boxplot on the important feature reveal
-a linear relationship with these features. This is an interesting trend,
-because many of these characteristics have confounding effects or
-colinearity that exist with them. For instance, a person scoring high in
-GRE has high probability of scoring high in TOEFL and potentially wrote
-a worthy statemnent of purpose. Therefore, it is essential to examinte
-partial correlation coefficients of these attributes on the admisssion
+SOP, LOR, CGPA and Research. The boxplot on the important features
+reveals a positive relationship. This is an interesting trend, because
+many of these characteristics have confounding effects or colinearity
+that exist with them. For instance, a person scoring high in GRE has a
+high probability of scoring high in TOEFL and potentially writing a
+worthy statement of purpose. Therefore, it is essential to examine
+partial correlation coefficients of these features on the admisssion
 chances.
 
 \begin{Shaded}
@@ -500,7 +506,7 @@ chances.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-5-1.pdf}
+\includegraphics{USGradAdmission_files/figure-latex/correlation_analysis-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -509,19 +515,19 @@ chances.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-5-2.pdf}
+\includegraphics{USGradAdmission_files/figure-latex/correlation_analysis-2.pdf}
 
 \hypertarget{visualizing-the-relationship}{%
 \subsection{Visualizing the
 relationship}\label{visualizing-the-relationship}}
 
 This step further explores the relationship by visualizing the spread of
-the attributes and presenting the relationship between combination of
-attributes in influencing the admission rates. I explore the impacts of
+the features and presents the relationship between combination of
+features in influencing the admission rates. I explore the impacts of
 TOEFL. Score, GRE.Score and CGPA on Admission grouped by University
-Rating. The trend is linear and there is strong evidence that these is
-positively related to the admission rates and the requirements vary with
-Universities.
+Rating. The trend appears to be linear and there is strong evidence that
+these features are positively related to the admission rates, however
+their magnitudes vary by Universities.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -532,7 +538,7 @@ Universities.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-6-1.pdf}
+\includegraphics{USGradAdmission_files/figure-latex/boxplots_features-1.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -544,7 +550,7 @@ Universities.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-6-2.pdf}
+\includegraphics{USGradAdmission_files/figure-latex/boxplots_features-2.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -555,19 +561,21 @@ Universities.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-6-3.pdf}
+\includegraphics{USGradAdmission_files/figure-latex/boxplots_features-3.pdf}
 
 \hypertarget{partial-correlation-coefficient}{%
 \subsection{Partial correlation
 coefficient}\label{partial-correlation-coefficient}}
 
 Beyond the correlation coefficients, the partial correlations reveal the
-influence of invidual attribute to our dependent varaible of interest.
-Furthermore, partial correlation ensures that the confounding effects of
-variables are eliminated. This analysis show that the SOP and
-University.Rating had a minor influence when partial correlation values
-are considered. Based on these findings SOP, University.Rating will be
-cleansed from our datasets before our modeling efforts.
+influence of individual attributes to the dependent variables of
+interest. Furthermore, partial correlation ensures that the confounding
+effects that exist in the variables are eliminated. This probability
+values from the partial correlation coefficient, shows that the SOP and
+University.Rating had no influence when partial correlation values were
+considered (p\textgreater{}0.05). Based on these findings, SOP and
+`University.Rating' features will be cleansed from our dataset before
+the model development.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -585,12 +593,18 @@ cleansed from our datasets before our modeling efforts.
 \NormalTok{Estimates=}\KeywordTok{data.frame}\NormalTok{(partials}\OperatorTok{$}\NormalTok{estimate[,}\DecValTok{7}\OperatorTok{:}\DecValTok{8}\NormalTok{])}
 \NormalTok{P.values=}\KeywordTok{data.frame}\NormalTok{(partials}\OperatorTok{$}\NormalTok{p.value[, }\DecValTok{7}\OperatorTok{:}\DecValTok{8}\NormalTok{])}
 \CommentTok{# printing the results}
-\KeywordTok{kable}\NormalTok{((Estimates), }\DataTypeTok{format =} \StringTok{"markdown"}\NormalTok{, }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{, }
-      \DataTypeTok{caption=}\StringTok{"Partial correlations  of the input dataset attributes"}\NormalTok{) }
+\KeywordTok{kable}\NormalTok{((Estimates), }\DataTypeTok{format =} \StringTok{"pandoc"}\NormalTok{, }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{, }
+      \DataTypeTok{caption=}\StringTok{"Partial correlations  of the input dataset features"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
 \begin{longtable}[]{@{}lrr@{}}
+\caption{Partial correlations of the input dataset
+features}\tabularnewline
+\toprule
+& Research & Chance.of.Admit\tabularnewline
+\midrule
+\endfirsthead
 \toprule
 & Research & Chance.of.Admit\tabularnewline
 \midrule
@@ -608,12 +622,18 @@ Chance.of.Admit & 0.15 & 1.00\tabularnewline
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{kable}\NormalTok{((P.values), }\DataTypeTok{format =} \StringTok{"markdown"}\NormalTok{, }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{, }
-      \DataTypeTok{caption=}\StringTok{"Probability values  of the input dataset attributes"}\NormalTok{) }
+\KeywordTok{kable}\NormalTok{((P.values), }\DataTypeTok{format =} \StringTok{"pandoc"}\NormalTok{, }\DataTypeTok{digits=}\DecValTok{2}\NormalTok{, }
+      \DataTypeTok{caption=}\StringTok{"Probability values  of the input dataset features"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
 
 \begin{longtable}[]{@{}lrr@{}}
+\caption{Probability values of the input dataset
+features}\tabularnewline
+\toprule
+& Research & Chance.of.Admit\tabularnewline
+\midrule
+\endfirsthead
 \toprule
 & Research & Chance.of.Admit\tabularnewline
 \midrule
@@ -629,17 +649,21 @@ Chance.of.Admit & 0.00 & 0.00\tabularnewline
 \bottomrule
 \end{longtable}
 
-\hypertarget{data-preparation-for-modeling}{%
-\section{Data Preparation for
-Modeling}\label{data-preparation-for-modeling}}
+\hypertarget{model-development}{%
+\section{Model Development}\label{model-development}}
 
-\#\#Data Cleansing Based on the partial correlation coefficient
-analysis, the SOP and the University Rating features are removed from
-the dataset.
+\hypertarget{data-cleansing}{%
+\subsection{Data Cleansing}\label{data-cleansing}}
+
+Based on the partial correlation coefficient analysis, the SOP and the
+University Rating features are removed from the dataset. Only this
+dataset with reduced features will be further used for all of the
+modeling efforts.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{adm}\OperatorTok{%>%}\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{SOP, }\OperatorTok{-}\NormalTok{University.Rating)->admfea }\CommentTok{# data cleansed after removing SOP}
+\CommentTok{# data cleansed after removing SOP}
+\NormalTok{adm}\OperatorTok{%>%}\NormalTok{dplyr}\OperatorTok{::}\KeywordTok{select}\NormalTok{(}\OperatorTok{-}\NormalTok{SOP, }\OperatorTok{-}\NormalTok{University.Rating)->admfea }
 \end{Highlighting}
 \end{Shaded}
 
@@ -650,10 +674,23 @@ datasets.}\label{splitting-data-into-training-and-validation-datasets.}}
 The data is split into two datasets. One for training and validation.
 The training dataset will be used for model development and the
 validation dataset will only be used for validation of the model as a
-final step. Twenty percent of the cleansed data was chosen as the
+final step. Fifty percent of the cleansed data was chosen as the
 validation dataset at random (318) and the rest (82) was saved as the
-training dataset. The attributes selected were GRE.Score, TOEFL.Score,
-University.Rating, LOR, CGPA and Research
+training dataset. This proportion was chosen based on the strength of
+the features and their potential relationship with the admission rates.
+The features selected were GRE.Score, TOEFL.Score, University.Rating,
+LOR, CGPA and Research
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{sample.kind =} \StringTok{"Rounding"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in set.seed(1, sample.kind = "Rounding"): non-uniform 'Rounding' sampler
+## used
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -666,20 +703,51 @@ University.Rating, LOR, CGPA and Research
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## Warning: The `i` argument of ``[`()` can't be a matrix as of tibble 3.0.0.
+## Convert to a vector.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.
+\end{verbatim}
+
+\hypertarget{model-performance-metrics}{%
+\subsection{Model Performance Metrics}\label{model-performance-metrics}}
+
+The performance of the models are evaluated through two metrics. First,
+the Root mean square error (RMSE) and second with R2, coefficient of
+determination, between the acutals and predicted values.
+
+RMSE
+\[ RMSE = \sqrt{\frac{1}{n}\Sigma_{i=1}^{n}{\Big(\frac{yhat -y}{\sigma_i}\Big)^2}} \]
+
+where, yhat is the predicted value of y, y is the actual value, n is the
+number of samples.
+
+\hypertarget{results}{%
+\section{Results}\label{results}}
+
 \hypertarget{approach-and-model-development}{%
-\section{Approach and Model
+\subsection{Approach and Model
 Development}\label{approach-and-model-development}}
 
-From the data types, boxplots and intial data exploration, it is evident
-that this is a regression problem. Accordingly, regression based
-modeling solutions will be explored for model development. Initially, a
-general linear model will be built using all of the features in the
-datasets. Following this a feature reduction step will be performed for
-the linear models using a Stepwise regression. A backward and foward
-propagated stepwise regression will be performed and the model that
-exhibits the lowest AIC score will be selected. The AIC refers to the
-Akaike Information Criteria that defines the performance of the model
-chosen through a penalization procedure.
+From the datatype of the dependent variable and intial data exploration,
+it is evident that this is a regression problem. Accordingly, regression
+based modeling solutions will be explored for model development.
+Initially, a general linear model will be built using all of the
+features in the dataset. Following this a feature reduction step will be
+performed for the linear models using a stepwise regression. A backward
+and foward propagated stepwise regression will be performed and the
+model that exhibits the lowest AIC score will be selected. The AIC
+refers to the Akaike Information Criteria that defines the performance
+of the model chosen through a penalization procedure.
+
+\hypertarget{tuning-the-parameters}{%
+\subsection{Tuning the parameters}\label{tuning-the-parameters}}
+
+This section of the code was run for selecting the optimized parmeters
+for the Rborist. The predFixed parameter (mtry in RandomForest) and the
+minNode size model parameters are checked. Given the limitation of the
+resources, this code is commented out.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -707,61 +775,118 @@ chosen through a penalization procedure.
 \hypertarget{linear-model}{%
 \subsection{Linear Model}\label{linear-model}}
 
+The general linear model considers Chance.of.Admit as the dependent
+variable and all of the other features as the independent variables. The
+linear model summary showed that the GRE and TOEFL scores were not
+significantly correlated with the predicted variable. This seems
+unreasonable and potentially confounding or multicolinearity effects are
+masking their effects. Therefore, a stepwise regression procedure was
+implemented to identify the most influential factors. The results
+revealed that Chance.of.Admit \textasciitilde{} GRE.Score + TOEFL.Score
++ LOR + CGPA were chosen as the factors for the model. Accordingly, a
+lm.model.step was constructed. Note that the R2 values were similar on
+both of the models.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{mod.lm=}\KeywordTok{lm}\NormalTok{(Chance.of.Admit}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data=}\NormalTok{traindf)}
+\CommentTok{#General linear model}
+\NormalTok{mod.lm=}\KeywordTok{lm}\NormalTok{(Chance.of.Admit}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data=}\NormalTok{traindf) }
+\KeywordTok{summary}\NormalTok{(mod.lm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = Chance.of.Admit ~ ., data = traindf)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.23633 -0.02649  0.00890  0.03769  0.15988 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(>|t|)    
+## (Intercept) -1.2737301  0.1744318  -7.302 7.24e-12 ***
+## GRE.Score    0.0014463  0.0009021   1.603 0.110516    
+## TOEFL.Score  0.0020728  0.0014942   1.387 0.166967    
+## LOR          0.0240550  0.0070353   3.419 0.000766 ***
+## CGPA         0.1431870  0.0169714   8.437 7.59e-15 ***
+## Research     0.0104297  0.0115710   0.901 0.368516    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 0.06315 on 193 degrees of freedom
+## Multiple R-squared:  0.8146, Adjusted R-squared:  0.8098 
+## F-statistic: 169.6 on 5 and 193 DF,  p-value: < 2.2e-16
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#predicting results from the model}
 \NormalTok{pred.lm=}\KeywordTok{predict}\NormalTok{(mod.lm, }\DataTypeTok{newdata=}\NormalTok{valdf)}
 \KeywordTok{RMSE}\NormalTok{(pred.lm, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 0.06337683
+## [1] 0.0655762
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{#Stepwise Regression procedure}
 \KeywordTok{stepAIC}\NormalTok{(mod.lm, }\DataTypeTok{direction=}\StringTok{"both"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## Start:  AIC=-1077.91
+## Start:  AIC=-1093.45
 ## Chance.of.Admit ~ GRE.Score + TOEFL.Score + LOR + CGPA + Research
 ## 
 ##               Df Sum of Sq     RSS     AIC
-## - TOEFL.Score  1   0.00077 0.83303 -1079.7
-## <none>                     0.83226 -1077.9
-## - GRE.Score    1   0.01578 0.84804 -1076.2
-## - Research     1   0.01967 0.85193 -1075.3
-## - LOR          1   0.04888 0.88114 -1068.5
-## - CGPA         1   0.31951 1.15177 -1015.2
+## - Research     1  0.003240 0.77298 -1094.6
+## - TOEFL.Score  1  0.007675 0.77742 -1093.5
+## <none>                     0.76974 -1093.5
+## - GRE.Score    1  0.010251 0.77999 -1092.8
+## - LOR          1  0.046627 0.81637 -1083.7
+## - CGPA         1  0.283897 1.05364 -1033.0
 ## 
-## Step:  AIC=-1079.72
-## Chance.of.Admit ~ GRE.Score + LOR + CGPA + Research
+## Step:  AIC=-1094.61
+## Chance.of.Admit ~ GRE.Score + TOEFL.Score + LOR + CGPA
 ## 
 ##               Df Sum of Sq     RSS     AIC
-## <none>                     0.83303 -1079.7
-## + TOEFL.Score  1   0.00077 0.83226 -1077.9
-## - Research     1   0.01937 0.85240 -1077.2
-## - GRE.Score    1   0.02355 0.85658 -1076.2
-## - LOR          1   0.04961 0.88264 -1070.2
-## - CGPA         1   0.38380 1.21682 -1006.3
+## - TOEFL.Score  1  0.007085 0.78007 -1094.8
+## <none>                     0.77298 -1094.6
+## + Research     1  0.003240 0.76974 -1093.5
+## - GRE.Score    1  0.014482 0.78747 -1092.9
+## - LOR          1  0.048971 0.82195 -1084.4
+## - CGPA         1  0.295041 1.06802 -1032.3
+## 
+## Step:  AIC=-1094.79
+## Chance.of.Admit ~ GRE.Score + LOR + CGPA
+## 
+##               Df Sum of Sq     RSS     AIC
+## <none>                     0.78007 -1094.8
+## + TOEFL.Score  1   0.00709 0.77298 -1094.6
+## + Research     1   0.00265 0.77742 -1093.5
+## - GRE.Score    1   0.03368 0.81375 -1088.4
+## - LOR          1   0.05524 0.83531 -1083.2
+## - CGPA         1   0.35233 1.13240 -1022.6
 \end{verbatim}
 
 \begin{verbatim}
 ## 
 ## Call:
-## lm(formula = Chance.of.Admit ~ GRE.Score + LOR + CGPA + Research, 
-##     data = traindf)
+## lm(formula = Chance.of.Admit ~ GRE.Score + LOR + CGPA, data = traindf)
 ## 
 ## Coefficients:
-## (Intercept)    GRE.Score          LOR         CGPA     Research  
-##   -1.213402     0.001827     0.023654     0.146315     0.025734
+## (Intercept)    GRE.Score          LOR         CGPA  
+##   -1.367540     0.002218     0.025851     0.151528
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{#Predicting results from stepwise regression}
 \NormalTok{mod.lm.step=}\KeywordTok{lm}\NormalTok{(Chance.of.Admit}\OperatorTok{~}\NormalTok{GRE.Score}\OperatorTok{+}
 \StringTok{                 }\NormalTok{TOEFL.Score}\OperatorTok{+}\NormalTok{LOR}\OperatorTok{+}\NormalTok{CGPA, }\DataTypeTok{data=}\NormalTok{traindf)}
 \KeywordTok{summary}\NormalTok{(mod.lm.step)}
@@ -775,47 +900,67 @@ chosen through a penalization procedure.
 ##     CGPA, data = traindf)
 ## 
 ## Residuals:
-##      Min       1Q   Median       3Q      Max 
-## -0.23796 -0.01987  0.01154  0.03992  0.14565 
+##       Min        1Q    Median        3Q       Max 
+## -0.243878 -0.026094  0.007705  0.037273  0.156825 
 ## 
 ## Coefficients:
 ##               Estimate Std. Error t value Pr(>|t|)    
-## (Intercept) -1.3996427  0.1555292  -8.999  < 2e-16 ***
-## GRE.Score    0.0023099  0.0008240   2.803 0.005572 ** 
-## TOEFL.Score  0.0004945  0.0015119   0.327 0.743955    
-## LOR          0.0252382  0.0069987   3.606 0.000395 ***
-## CGPA         0.1449749  0.0168360   8.611 2.48e-15 ***
+## (Intercept) -1.3432107  0.1563998  -8.588 2.87e-15 ***
+## GRE.Score    0.0016591  0.0008703   1.906 0.058068 .  
+## TOEFL.Score  0.0019876  0.0014905   1.333 0.183936    
+## LOR          0.0245705  0.0070086   3.506 0.000565 ***
+## CGPA         0.1449726  0.0168472   8.605 2.58e-15 ***
 ## ---
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 ## 
-## Residual standard error: 0.06627 on 194 degrees of freedom
-## Multiple R-squared:  0.7925, Adjusted R-squared:  0.7882 
-## F-statistic: 185.2 on 4 and 194 DF,  p-value: < 2.2e-16
+## Residual standard error: 0.06312 on 194 degrees of freedom
+## Multiple R-squared:  0.8139, Adjusted R-squared:   0.81 
+## F-statistic:   212 on 4 and 194 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
 \hypertarget{machine-learning-models}{%
 \subsection{Machine Learning Models}\label{machine-learning-models}}
 
+For machine learning, the following models were chosen: Rborist, which
+is a fast implementation of the random forest, k-nearest neighbours,
+neural net implmentation of glm (glmnet), gradient boost algorithm
+(xgbLinear), bayesian regularized neural network (brnn) and ridge
+regression. All of these models were run in the CareEnsemble package.
+This packages allows simulataneous runs of various ML algorithms,
+collect and integrate the results and above all, conducts an ensemble
+evaluation of the model results based on their performance. In this
+case, the RMSE will be used to evaluate the performance of the models by
+defaults and the results are weighted according to the model RMSE
+values.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\NormalTok{opts_chunk}\OperatorTok{$}\KeywordTok{set}\NormalTok{(}\DataTypeTok{cache=}\NormalTok{T)}
- 
-\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
- 
-\NormalTok{cl=}\KeywordTok{makePSOCKcluster}\NormalTok{(}\KeywordTok{detectCores}\NormalTok{()}\OperatorTok{-}\DecValTok{1}\NormalTok{)}
-\KeywordTok{registerDoParallel}\NormalTok{(cl)}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{sample.kind =} \StringTok{"Rounding"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-\NormalTok{my.con=}\KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method=}\StringTok{"cv"}\NormalTok{, }\DataTypeTok{number=}\DecValTok{3}\NormalTok{,}
+\begin{verbatim}
+## Warning in set.seed(1, sample.kind = "Rounding"): non-uniform 'Rounding' sampler
+## used
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cl=}\KeywordTok{makePSOCKcluster}\NormalTok{(}\KeywordTok{detectCores}\NormalTok{()}\OperatorTok{-}\DecValTok{1}\NormalTok{) }\CommentTok{#setting up clusters for parallel processing}
+\KeywordTok{registerDoParallel}\NormalTok{(cl) }\CommentTok{# register the clusters for parellel processing}
+
+\NormalTok{my.con=}\KeywordTok{trainControl}\NormalTok{(}\DataTypeTok{method=}\StringTok{"cv"}\NormalTok{, }\CommentTok{# choose cross validation}
+                    \DataTypeTok{number=}\DecValTok{3}\NormalTok{, }\CommentTok{# number of times the process is run}
                     \DataTypeTok{savePredictions =} \StringTok{"final"}\NormalTok{, }\DataTypeTok{allowParallel =}\NormalTok{ T)}
 \NormalTok{models=}\KeywordTok{caretList}\NormalTok{(Chance.of.Admit}\OperatorTok{~}\NormalTok{., }\DataTypeTok{data=}\NormalTok{traindf,}
 \DataTypeTok{trainControl=}\NormalTok{my.con, }
-\DataTypeTok{methodList =} \KeywordTok{c}\NormalTok{(}\StringTok{"Rborist"}\NormalTok{,  }
+\DataTypeTok{methodList =} \KeywordTok{c}\NormalTok{(}\StringTok{"Rborist"}\NormalTok{,  }\CommentTok{# list of ML models chosen}
                \StringTok{"knn"}\NormalTok{, }
                \StringTok{"glmnet"}\NormalTok{,}
                \StringTok{"xgbLinear"}\NormalTok{,}
                \StringTok{"brnn"}\NormalTok{, }
                \StringTok{"ridge"}\NormalTok{), }
-\DataTypeTok{continue_on_fail =}\NormalTok{ T)}
+\DataTypeTok{continue_on_fail =}\NormalTok{ T) }\CommentTok{# making sure all models are running without error}
 \end{Highlighting}
 \end{Shaded}
 
@@ -831,8 +976,8 @@ chosen through a penalization procedure.
 \end{verbatim}
 
 \begin{verbatim}
-## [12:44:33] WARNING: amalgamation/../src/objective/regression_obj.cu:170: reg:linear is now deprecated in favor of reg:squarederror.
-## [12:44:33] WARNING: amalgamation/../src/learner.cc:480: 
+## [22:17:00] WARNING: amalgamation/../src/objective/regression_obj.cu:170: reg:linear is now deprecated in favor of reg:squarederror.
+## [22:17:00] WARNING: amalgamation/../src/learner.cc:480: 
 ## Parameters: { trainControl } might not be used.
 ## 
 ##   This may not be accurate due to some parameters are only used in language bindings but
@@ -843,8 +988,7 @@ chosen through a penalization procedure.
 ## Number of parameters (weights and biases) to estimate: 7 
 ## Nguyen-Widrow method
 ## Scaling factor= 0.7 
-## gamma= 6.5184     alpha= 1.228    beta= 10.6021 
-## 1 package is needed for this model and is not installed. (elasticnet). Would you like to try to install it now?
+## gamma= 6.7034     alpha= 1.6038   beta= 12.0324
 \end{verbatim}
 
 \begin{Shaded}
@@ -865,37 +1009,37 @@ chosen through a penalization procedure.
 ## Resampling results across tuning parameters:
 ## 
 ##   lambda  alpha  nrounds  RMSE        Rsquared   MAE       
-##   0e+00   0e+00   50      0.08205874  0.7005220  0.06067428
-##   0e+00   0e+00  100      0.08205872  0.7005220  0.06067422
-##   0e+00   0e+00  150      0.08205868  0.7005220  0.06067416
-##   0e+00   1e-04   50      0.08151685  0.7034346  0.06004102
-##   0e+00   1e-04  100      0.08151681  0.7034346  0.06004095
-##   0e+00   1e-04  150      0.08151678  0.7034345  0.06004090
-##   0e+00   1e-01   50      0.07677988  0.7323696  0.05711481
-##   0e+00   1e-01  100      0.07677988  0.7323696  0.05711481
-##   0e+00   1e-01  150      0.07677988  0.7323696  0.05711481
-##   1e-04   0e+00   50      0.08203076  0.7006150  0.06065748
-##   1e-04   0e+00  100      0.08203073  0.7006150  0.06065741
-##   1e-04   0e+00  150      0.08203069  0.7006150  0.06065735
-##   1e-04   1e-04   50      0.08168928  0.7021681  0.06018655
-##   1e-04   1e-04  100      0.08168926  0.7021680  0.06018650
-##   1e-04   1e-04  150      0.08168923  0.7021680  0.06018645
-##   1e-04   1e-01   50      0.07677987  0.7323933  0.05712004
-##   1e-04   1e-01  100      0.07677987  0.7323933  0.05712004
-##   1e-04   1e-01  150      0.07677987  0.7323933  0.05712004
-##   1e-01   0e+00   50      0.08073932  0.7088634  0.05964312
-##   1e-01   0e+00  100      0.08073930  0.7088633  0.05964307
-##   1e-01   0e+00  150      0.08073926  0.7088633  0.05964301
-##   1e-01   1e-04   50      0.08055568  0.7103941  0.05971346
-##   1e-01   1e-04  100      0.08055568  0.7103941  0.05971341
-##   1e-01   1e-04  150      0.08055566  0.7103941  0.05971336
-##   1e-01   1e-01   50      0.07691574  0.7308336  0.05731010
-##   1e-01   1e-01  100      0.07691574  0.7308336  0.05731010
-##   1e-01   1e-01  150      0.07691574  0.7308336  0.05731010
+##   0e+00   0e+00   50      0.08063889  0.7109212  0.05853937
+##   0e+00   0e+00  100      0.08063882  0.7109211  0.05853927
+##   0e+00   0e+00  150      0.08063874  0.7109211  0.05853918
+##   0e+00   1e-04   50      0.08058688  0.7117638  0.05854805
+##   0e+00   1e-04  100      0.08058681  0.7117637  0.05854795
+##   0e+00   1e-04  150      0.08058673  0.7117637  0.05854785
+##   0e+00   1e-01   50      0.07457953  0.7465389  0.05386809
+##   0e+00   1e-01  100      0.07457953  0.7465389  0.05386809
+##   0e+00   1e-01  150      0.07457953  0.7465389  0.05386809
+##   1e-04   0e+00   50      0.08059165  0.7113760  0.05860778
+##   1e-04   0e+00  100      0.08059158  0.7113759  0.05860768
+##   1e-04   0e+00  150      0.08059151  0.7113758  0.05860759
+##   1e-04   1e-04   50      0.08057632  0.7115631  0.05863154
+##   1e-04   1e-04  100      0.08057625  0.7115630  0.05863144
+##   1e-04   1e-04  150      0.08057617  0.7115630  0.05863134
+##   1e-04   1e-01   50      0.07457143  0.7465915  0.05385579
+##   1e-04   1e-01  100      0.07457143  0.7465915  0.05385579
+##   1e-04   1e-01  150      0.07457143  0.7465915  0.05385579
+##   1e-01   0e+00   50      0.07871170  0.7225830  0.05702163
+##   1e-01   0e+00  100      0.07871164  0.7225830  0.05702156
+##   1e-01   0e+00  150      0.07871158  0.7225829  0.05702149
+##   1e-01   1e-04   50      0.07872647  0.7221352  0.05712342
+##   1e-01   1e-04  100      0.07872644  0.7221352  0.05712337
+##   1e-01   1e-04  150      0.07872640  0.7221352  0.05712333
+##   1e-01   1e-01   50      0.07439612  0.7473093  0.05330426
+##   1e-01   1e-01  100      0.07439612  0.7473093  0.05330426
+##   1e-01   1e-01  150      0.07439612  0.7473093  0.05330426
 ## 
 ## Tuning parameter 'eta' was held constant at a value of 0.3
 ## RMSE was used to select the optimal model using the smallest value.
-## The final values used for the model were nrounds = 50, lambda = 1e-04, alpha
+## The final values used for the model were nrounds = 50, lambda = 0.1, alpha
 ##  = 0.1 and eta = 0.3.
 \end{verbatim}
 
@@ -917,9 +1061,9 @@ chosen through a penalization procedure.
 ## Resampling results across tuning parameters:
 ## 
 ##   k  RMSE        Rsquared   MAE       
-##   5  0.09306460  0.6055756  0.06961677
-##   7  0.09018177  0.6273696  0.06787979
-##   9  0.08941066  0.6365068  0.06740945
+##   5  0.08658990  0.6601111  0.06548773
+##   7  0.08444153  0.6718092  0.06346668
+##   9  0.08393995  0.6743269  0.06253178
 ## 
 ## RMSE was used to select the optimal model using the smallest value.
 ## The final value used for the model was k = 9.
@@ -943,9 +1087,9 @@ chosen through a penalization procedure.
 ## Resampling results across tuning parameters:
 ## 
 ##   predFixed  RMSE        Rsquared   MAE       
-##   2          0.07007374  0.7738223  0.05219741
-##   3          0.07140460  0.7648293  0.05306859
-##   5          0.07411851  0.7471535  0.05481163
+##   2          0.06905907  0.7774871  0.04954272
+##   3          0.07031808  0.7701666  0.05065089
+##   5          0.07271757  0.7561023  0.05272761
 ## 
 ## Tuning parameter 'minNode' was held constant at a value of 3
 ## RMSE was used to select the optimal model using the smallest value.
@@ -970,18 +1114,18 @@ chosen through a penalization procedure.
 ## Resampling results across tuning parameters:
 ## 
 ##   alpha  lambda        RMSE        Rsquared   MAE       
-##   0.10   0.0002514148  0.06702287  0.7923582  0.04860223
-##   0.10   0.0025141476  0.06687991  0.7935777  0.04839192
-##   0.10   0.0251414757  0.06810763  0.7930261  0.04933138
-##   0.55   0.0002514148  0.06701280  0.7924638  0.04861109
-##   0.55   0.0025141476  0.06682233  0.7941896  0.04839073
-##   0.55   0.0251414757  0.07051156  0.7943757  0.05291759
-##   1.00   0.0002514148  0.06700746  0.7924666  0.04863224
-##   1.00   0.0025141476  0.06691587  0.7939357  0.04855497
-##   1.00   0.0251414757  0.07423164  0.7888777  0.05742705
+##   0.10   0.0002568282  0.06495079  0.8067987  0.04742797
+##   0.10   0.0025682822  0.06490501  0.8071440  0.04730252
+##   0.10   0.0256828219  0.06613262  0.8042026  0.04734771
+##   0.55   0.0002568282  0.06495173  0.8068342  0.04740708
+##   0.55   0.0025682822  0.06497479  0.8069613  0.04731463
+##   0.55   0.0256828219  0.06797812  0.8074955  0.04961532
+##   1.00   0.0002568282  0.06496929  0.8067131  0.04742983
+##   1.00   0.0025682822  0.06508041  0.8066258  0.04737834
+##   1.00   0.0256828219  0.07188462  0.8010876  0.05383877
 ## 
 ## RMSE was used to select the optimal model using the smallest value.
-## The final values used for the model were alpha = 0.55 and lambda = 0.002514148.
+## The final values used for the model were alpha = 0.1 and lambda = 0.002568282.
 \end{verbatim}
 
 \begin{Shaded}
@@ -1002,9 +1146,9 @@ chosen through a penalization procedure.
 ## Resampling results across tuning parameters:
 ## 
 ##   neurons  RMSE        Rsquared   MAE       
-##   1        0.06776434  0.7872853  0.04909314
-##   2        0.06860481  0.7821797  0.04978834
-##   3        0.07133352  0.7642993  0.05161799
+##   1        0.06508188  0.8054340  0.04721833
+##   2        0.06648537  0.7965571  0.04807210
+##   3        0.06747989  0.7899181  0.04880175
 ## 
 ## RMSE was used to select the optimal model using the smallest value.
 ## The final value used for the model was neurons = 1.
@@ -1013,7 +1157,9 @@ chosen through a penalization procedure.
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{stopCluster}\NormalTok{(cl)}
-\KeywordTok{varImp}\NormalTok{(models}\OperatorTok{$}\NormalTok{Rborist)}
+\KeywordTok{registerDoSEQ}\NormalTok{()}
+\KeywordTok{rm}\NormalTok{(cl) }\CommentTok{# removing cluster}
+\KeywordTok{varImp}\NormalTok{(models}\OperatorTok{$}\NormalTok{Rborist) }\CommentTok{# variable importance for Rborist}
 \end{Highlighting}
 \end{Shaded}
 
@@ -1022,9 +1168,9 @@ chosen through a penalization procedure.
 ## 
 ##             Overall
 ## CGPA         100.00
-## GRE.Score     42.11
-## TOEFL.Score   26.11
-## LOR           14.41
+## GRE.Score     95.78
+## TOEFL.Score   44.33
+## LOR           13.91
 ## Research       0.00
 \end{verbatim}
 
@@ -1039,54 +1185,60 @@ chosen through a penalization procedure.
 ## 
 ##              Overall
 ## CGPA        100.0000
-## Research     17.1930
-## LOR          16.2224
-## GRE.Score     0.6967
-## TOEFL.Score   0.0000
+## LOR          17.4840
+## Research      7.2316
+## TOEFL.Score   0.5354
+## GRE.Score     0.0000
 \end{verbatim}
-
-\hypertarget{model-with-reduced-features}{%
-\subsection{Model with Reduced
-Features}\label{model-with-reduced-features}}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{# traindf%>%dplyr::select(-Research, -SOP)->traindf_red}
-\CommentTok{# cl=makePSOCKcluster(detectCores()-1)}
-\CommentTok{# registerDoParallel(cl)}
-\CommentTok{# models=caretList(Chance.of.Admit~., data=traindf_red,}
-\CommentTok{# trainControl=my.con, }
-\CommentTok{# methodList = c("Rborist",  }
-\CommentTok{#                "knn", }
-\CommentTok{#                "glmnet",}
-\CommentTok{#                "xgbLinear",}
-\CommentTok{#                "brnn"), }
-\CommentTok{# continue_on_fail = T)}
-\CommentTok{# models$xgbLinear}
-\CommentTok{# models$knn}
-\CommentTok{# models$Rborist}
-\CommentTok{# models$glmnet}
-\CommentTok{# models$brnn}
-\CommentTok{# varImp(models$Rborist)}
-\CommentTok{# varImp(models$glmnet)}
-\end{Highlighting}
-\end{Shaded}
 
 \hypertarget{feature-reduction}{%
 \subsection{Feature Reduction}\label{feature-reduction}}
 
+The varImp procedure from the ensemble reveals different feature
+importance based on the model. This step attempts to explore whether a
+feature reduction is possible to achieve without compromising the
+performance of the model using the random Forest function. A recursive
+feature reduction method is implemented to check the feature reduction
+opportunities.The recursive feature eliminated Research feature from the
+modelo. Since the ensemble of models prefer to have different input
+features, all features were left in the model.
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\KeywordTok{set.seed}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DataTypeTok{sample.kind =} \StringTok{"Rounding"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in set.seed(1, sample.kind = "Rounding"): non-uniform 'Rounding' sampler
+## used
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{cl=}\KeywordTok{makePSOCKcluster}\NormalTok{(}\KeywordTok{detectCores}\NormalTok{()}\OperatorTok{-}\DecValTok{1}\NormalTok{)}
 \KeywordTok{registerDoParallel}\NormalTok{(cl)}
  
-\NormalTok{ctrl=}\KeywordTok{rfeControl}\NormalTok{(}\DataTypeTok{functions =}\NormalTok{ rfFuncs,}
-           \DataTypeTok{method =} \StringTok{"cv"}\NormalTok{,}
-           \DataTypeTok{number =} \DecValTok{2}\NormalTok{,}
+\NormalTok{ctrl=}\KeywordTok{rfeControl}\NormalTok{(}\DataTypeTok{functions =}\NormalTok{ rfFuncs, }\CommentTok{#random forest function }
+           \DataTypeTok{method =} \StringTok{"cv"}\NormalTok{, }\CommentTok{# cross validation}
+           \DataTypeTok{number =} \DecValTok{2}\NormalTok{, }\CommentTok{# times}
            \DataTypeTok{verbose =}\NormalTok{ F)}
-\NormalTok{subsets=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{)}
-\NormalTok{lmProfile=}\KeywordTok{rfe}\NormalTok{(traindf[,}\OperatorTok{-}\DecValTok{6}\NormalTok{], traindf[,}\DecValTok{6}\NormalTok{], }\DataTypeTok{sizes=}\NormalTok{subsets, }\DataTypeTok{rfeControl=}\NormalTok{ctrl)}
+\NormalTok{subsets=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{)}
+\KeywordTok{registerDoSEQ}\NormalTok{() }\CommentTok{# avoid warning of parallel clusters not existing}
+\NormalTok{lmProfile=}\KeywordTok{rfe}\NormalTok{(}\KeywordTok{as.matrix}\NormalTok{(traindf[,}\OperatorTok{-}\DecValTok{6}\NormalTok{]), }
+              \KeywordTok{as.matrix}\NormalTok{(traindf[,}\DecValTok{6}\NormalTok{]), }
+              \DataTypeTok{sizes=}\NormalTok{subsets, }
+              \DataTypeTok{rfeControl=}\NormalTok{ctrl) }\CommentTok{# recursive feature elimination}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in rfout$mse/(var(y) * (n - 1)/n): Recycling array of length 1 in vector-array arithmetic is deprecated.
+##   Use c() or as.vector() instead.
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \NormalTok{lmProfile}
 \end{Highlighting}
 \end{Shaded}
@@ -1099,15 +1251,15 @@ Features}\label{model-with-reduced-features}}
 ## 
 ## Resampling performance over subset size:
 ## 
-##  Variables    RMSE Rsquared     MAE    RMSESD RsquaredSD    MAESD Selected
-##          1 0.07691   0.7143 0.05767 0.0076163    0.05154 0.005530         
-##          2 0.07275   0.7463 0.05572 0.0036125    0.02404 0.005764         
-##          3 0.07454   0.7453 0.05623 0.0006496    0.01353 0.003492         
-##          4 0.07306   0.7545 0.05469 0.0026195    0.01914 0.002431         
-##          5 0.07077   0.7762 0.05266 0.0018916    0.02764 0.004516        *
+##  Variables    RMSE Rsquared     MAE   RMSESD RsquaredSD    MAESD Selected
+##          1 0.08702   0.6491 0.06394 0.024352    0.16673 0.019171         
+##          2 0.07245   0.7511 0.05325 0.007942    0.04575 0.003054         
+##          3 0.07289   0.7493 0.05217 0.008247    0.04638 0.002315         
+##          4 0.06742   0.7857 0.04788 0.009911    0.05166 0.002970        *
+##          5 0.06969   0.7769 0.05048 0.009760    0.04848 0.003595         
 ## 
-## The top 5 variables (out of 5):
-##    CGPA, GRE.Score, LOR, Research, TOEFL.Score
+## The top 4 variables (out of 4):
+##    CGPA, GRE.Score, TOEFL.Score, LOR
 \end{verbatim}
 
 \begin{Shaded}
@@ -1116,41 +1268,122 @@ Features}\label{model-with-reduced-features}}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-14-1.pdf}
+\includegraphics{USGradAdmission_files/figure-latex/feature_reduction-1.pdf}
+
+The lmProfile chose 4 models. Nonetheless, owing to multiple models
+involved in the ensemble, I have chosen to include all five features in
+the model.
+
+\hypertarget{cross-validation}{%
+\subsection{Cross validation}\label{cross-validation}}
+
+The following plot demonstrates the performance of the machine learning
+models with the cross-validation dataset. The brnn and glmnet both
+registered the lowest RMSE values in this step. The knn model registerd
+the highest RMSE value. Glmnet which is a form of the general linear
+model outperformed all other models in the cross-validation.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{ cl=}\KeywordTok{makePSOCKcluster}\NormalTok{(}\KeywordTok{detectCores}\NormalTok{()}\OperatorTok{-}\DecValTok{1}\NormalTok{)}
  \KeywordTok{registerDoParallel}\NormalTok{(cl)}
+ \CommentTok{#retrieve resamples from cross validation}
 \NormalTok{ resamples<-}\KeywordTok{resamples}\NormalTok{(models)}
  \KeywordTok{dotplot}\NormalTok{(resamples, }\DataTypeTok{metric=}\StringTok{"RMSE"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-15-1.pdf}
-\# Results
+\includegraphics{USGradAdmission_files/figure-latex/cross_validation_results-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \KeywordTok{summary}\NormalTok{(resamples)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## summary.resamples(object = resamples)
+## 
+## Models: Rborist, knn, glmnet, xgbLinear, brnn, ridge 
+## Number of resamples: 25 
+## 
+## MAE 
+##                 Min.    1st Qu.     Median       Mean    3rd Qu.       Max.
+## Rborist   0.04087272 0.04650832 0.04837651 0.04954272 0.05306860 0.06023343
+## knn       0.05062886 0.05933917 0.06375611 0.06253178 0.06639950 0.07113544
+## glmnet    0.04017813 0.04434533 0.04664781 0.04730252 0.04891365 0.05898725
+## xgbLinear 0.04162523 0.04886742 0.05361918 0.05330426 0.05739933 0.06370941
+## brnn      0.03957659 0.04443392 0.04668988 0.04721833 0.04853141 0.05911275
+## ridge     0.04039075 0.04496411 0.04685090 0.04749992 0.04864804 0.05971269
+##           NA's
+## Rborist      0
+## knn          0
+## glmnet       0
+## xgbLinear    0
+## brnn         0
+## ridge        0
+## 
+## RMSE 
+##                 Min.    1st Qu.     Median       Mean    3rd Qu.       Max.
+## Rborist   0.05888242 0.06372738 0.06814136 0.06905907 0.07374948 0.08176403
+## knn       0.06539133 0.08009600 0.08325039 0.08393995 0.08835281 0.09735443
+## glmnet    0.05327690 0.05940444 0.06664181 0.06490501 0.06906988 0.07601822
+## xgbLinear 0.06361614 0.06704974 0.07401360 0.07439612 0.08120587 0.08926259
+## brnn      0.05298541 0.05856899 0.06685617 0.06508188 0.06916823 0.07734920
+## ridge     0.05347100 0.05981185 0.06631941 0.06496590 0.06934683 0.07660255
+##           NA's
+## Rborist      0
+## knn          0
+## glmnet       0
+## xgbLinear    0
+## brnn         0
+## ridge        0
+## 
+## Rsquared 
+##                Min.   1st Qu.    Median      Mean   3rd Qu.      Max. NA's
+## Rborist   0.6565284 0.7323901 0.7859326 0.7774871 0.8201107 0.8508976    0
+## knn       0.5287886 0.6358892 0.6652869 0.6743269 0.7100946 0.8093582    0
+## glmnet    0.6955158 0.7847301 0.8143828 0.8071440 0.8376338 0.8644957    0
+## xgbLinear 0.6395155 0.7255789 0.7519061 0.7473093 0.7941205 0.8330314    0
+## brnn      0.6895725 0.7784176 0.8148005 0.8054340 0.8355610 0.8667472    0
+## ridge     0.6937151 0.7860366 0.8144191 0.8066642 0.8386284 0.8631465    0
+\end{verbatim}
+
+\hypertarget{ensemble-models}{%
+\subsection{Ensemble models}\label{ensemble-models}}
+
+Ensembling is a technique where the model results are weighed according
+to their performance. The caretEnsemble function performs this step and
+we can predict the performance of the ensemble models with the
+cross-validation dataset. The performance results are similar to those
+found from the individual models.
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{cl=}\KeywordTok{makePSOCKcluster}\NormalTok{(}\KeywordTok{detectCores}\NormalTok{())}
 \KeywordTok{registerDoParallel}\NormalTok{(cl)}
-\NormalTok{ens=}\KeywordTok{caretEnsemble}\NormalTok{(models, }\DataTypeTok{metric=}\StringTok{"RMSE"}\NormalTok{, }\DataTypeTok{trControl=}\NormalTok{my.con)}
+\CommentTok{# }
+\NormalTok{ens=}\KeywordTok{caretEnsemble}\NormalTok{(models, }\DataTypeTok{metric=}\StringTok{"RMSE"}\NormalTok{, }
+                  \DataTypeTok{trControl=}\NormalTok{my.con) }\CommentTok{# Run Ensemble model to gather the best result}
 \KeywordTok{summary}\NormalTok{(ens)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## The following models were ensembled: Rborist, knn, glmnet, xgbLinear, brnn 
+## The following models were ensembled: Rborist, knn, glmnet, xgbLinear, brnn, ridge 
 ## They were weighted: 
-## -0.0257 0.1918 0.0711 1.3128 -0.0134 -0.5298
-## The resulting RMSE is: 0.0665
+## -0.0129 0.0473 -0.0222 1.7555 0.0816 0.3364 -1.1817
+## The resulting RMSE is: 0.0652
 ## The fit for each individual model on the RMSE is: 
 ##     method       RMSE      RMSESD
-##    Rborist 0.07003540 0.007494216
-##        knn 0.08663003 0.007687303
-##     glmnet 0.06650807 0.007488198
-##  xgbLinear 0.07583018 0.008713204
-##       brnn 0.06740915 0.007771737
+##    Rborist 0.06905907 0.007154672
+##        knn 0.08393995 0.008092117
+##     glmnet 0.06490501 0.006347584
+##  xgbLinear 0.07439612 0.007735828
+##       brnn 0.06508188 0.006776304
+##      ridge 0.06496590 0.006371914
 \end{verbatim}
 
 \begin{Shaded}
@@ -1159,64 +1392,127 @@ Features}\label{model-with-reduced-features}}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Warning: Duplicated aesthetics after name standardisation: size
-\end{verbatim}
+\includegraphics{USGradAdmission_files/figure-latex/ensemble_output-1.pdf}
 
-\includegraphics{USGradAdmission_files/figure-latex/unnamed-chunk-16-1.pdf}
+\hypertarget{validation}{%
+\subsection{Validation}\label{validation}}
 
-\#Validation
-
-In this step, the model are evaluated for their performance. The models
-are used to predict the admission probabilities of the students with the
-validation dataset which was reserved from participating in the model
-developent process. The actual values of the admission rates were
-compared to the predicted values from various models. Both RMSE an the
-R2 values were evaluated.
+In this step, the model are evaluated for their performance against a
+new and independent dataset. The models are used to predict the
+admission probabilities of the students with the validation dataset
+which was reserved from participating in the model developent process.
+The actual values of the admission rates were compared to the predicted
+values from various models. Both RMSE an the R2 values were evaluated.
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{######### Results- Validation ############}
+
 \CommentTok{#Prediction from Linear model }
 \NormalTok{pred.lm.step=}\KeywordTok{predict}\NormalTok{(mod.lm.step, }\DataTypeTok{newdata =}\NormalTok{ valdf) }
 
-\CommentTok{#Predicted from Rborist }
+\CommentTok{#Predicted from each ML model}
 
 \NormalTok{ predicted.Rborist=}\KeywordTok{predict}\NormalTok{(models}\OperatorTok{$}\NormalTok{Rborist, }\DataTypeTok{newdata=}\NormalTok{valdf)}
+\NormalTok{ predicted.knn=}\KeywordTok{predict}\NormalTok{(models}\OperatorTok{$}\NormalTok{knn, }\DataTypeTok{newdata=}\NormalTok{valdf)}
+\NormalTok{ predicted.glmnet=}\KeywordTok{predict}\NormalTok{(models}\OperatorTok{$}\NormalTok{glmnet, }\DataTypeTok{newdata=}\NormalTok{valdf)}
+\NormalTok{ predicted.xgbLinear=}\KeywordTok{predict}\NormalTok{(models}\OperatorTok{$}\NormalTok{xgbLinear, }\DataTypeTok{newdata=}\NormalTok{valdf)}
+\NormalTok{ predicted.brnn=}\KeywordTok{predict}\NormalTok{(models}\OperatorTok{$}\NormalTok{brnn, }\DataTypeTok{newdata=}\NormalTok{valdf)}
+\NormalTok{ predicted.ridge=}\KeywordTok{predict}\NormalTok{(models}\OperatorTok{$}\NormalTok{ridge, }\DataTypeTok{newdata=}\NormalTok{valdf)}
+ 
+ 
+ 
  
 \CommentTok{#Prediction from Ensemble of the models}
 \NormalTok{ predicted.ens=}\KeywordTok{predict}\NormalTok{(ens, }\DataTypeTok{newdata=}\NormalTok{valdf)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## [12:44:42] WARNING: amalgamation/../src/objective/regression_obj.cu:170: reg:linear is now deprecated in favor of reg:squarederror.
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
+ 
+  
+ \CommentTok{# Construct the table to output th results.}
  \KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Rborist=}\KeywordTok{RMSE}\NormalTok{(predicted.Rborist, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }
             \DataTypeTok{Ensemble=}\KeywordTok{RMSE}\NormalTok{(predicted.ens, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit),}
-            \DataTypeTok{Linear=}\KeywordTok{RMSE}\NormalTok{(pred.lm.step, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit))}
+            \DataTypeTok{Linear=}\KeywordTok{RMSE}\NormalTok{(pred.lm.step, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit))->rmses}
+ 
+ \KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Rborist=}\KeywordTok{cor}\NormalTok{(predicted.Rborist, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }
+            \DataTypeTok{Ensemble=}\KeywordTok{cor}\NormalTok{(predicted.ens, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit),}
+            \DataTypeTok{Linear=}\KeywordTok{cor}\NormalTok{(pred.lm.step, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit))->r2s}
+ 
+\NormalTok{ Results=}\KeywordTok{data_frame}\NormalTok{(}\DataTypeTok{Model=}\StringTok{"Linear-Stepwise-Selected"}\NormalTok{, }
+                    \DataTypeTok{RMSE=}\KeywordTok{round}\NormalTok{(}\KeywordTok{RMSE}\NormalTok{(pred.lm.step, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{), }
+                    \DataTypeTok{R2=}\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(pred.lm.step, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##      Rborist   Ensemble     Linear
-## 1 0.06975151 0.05834425 0.06418429
+## Warning: `data_frame()` is deprecated as of tibble 1.1.0.
+## Please use `tibble()` instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_warnings()` to see where this warning was generated.
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
- \KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{Rborist=}\KeywordTok{cor}\NormalTok{(predicted.Rborist, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }
-            \DataTypeTok{Ensemble=}\KeywordTok{cor}\NormalTok{(predicted.ens, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit),}
-            \DataTypeTok{Linear=}\KeywordTok{cor}\NormalTok{(pred.lm.step, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit))}
+\NormalTok{Results[}\DecValTok{2}\NormalTok{,]=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{Model=}\StringTok{"knn"}\NormalTok{,}
+                    \DataTypeTok{RMSE=}\KeywordTok{round}\NormalTok{(}\KeywordTok{RMSE}\NormalTok{(predicted.knn, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{), }
+                    \DataTypeTok{R2=}\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(predicted.knn, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{))}
+\NormalTok{Results[}\DecValTok{3}\NormalTok{,]=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{Model=}\StringTok{"GLMnet"}\NormalTok{, }
+                    \DataTypeTok{RMSE=}\KeywordTok{round}\NormalTok{(}\KeywordTok{RMSE}\NormalTok{(predicted.glmnet, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{), }
+                    \DataTypeTok{R2=}\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(predicted.glmnet, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{))}
+
+\NormalTok{Results[}\DecValTok{4}\NormalTok{,]=}\KeywordTok{list}\NormalTok{( }\DataTypeTok{Model=}\StringTok{"XGBLinear"}\NormalTok{, }
+                    \DataTypeTok{RMSE=}\KeywordTok{round}\NormalTok{(}\KeywordTok{RMSE}\NormalTok{(predicted.xgbLinear, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{), }
+                    \DataTypeTok{R2=}\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(predicted.xgbLinear, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{))}
+\NormalTok{Results[}\DecValTok{5}\NormalTok{,]=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{Model=}\StringTok{"brnn"}\NormalTok{, }
+                    \DataTypeTok{RMSE=}\KeywordTok{round}\NormalTok{(}\KeywordTok{RMSE}\NormalTok{(predicted.brnn, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{), }
+                    \DataTypeTok{R2=}\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(predicted.brnn, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{))}
+\NormalTok{Results[}\DecValTok{6}\NormalTok{,]=}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{Model=}\StringTok{"Ridge Regression"}\NormalTok{, }
+                    \DataTypeTok{RMSE=}\KeywordTok{round}\NormalTok{(}\KeywordTok{RMSE}\NormalTok{(predicted.ridge, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{), }
+                    \DataTypeTok{R2=}\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(predicted.ridge, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{))}
+
+\NormalTok{Results[}\DecValTok{7}\NormalTok{,]=}\StringTok{ }\KeywordTok{list}\NormalTok{(}\DataTypeTok{Model=}\StringTok{"Ensemble"}\NormalTok{, }
+                    \DataTypeTok{RMSE=}\KeywordTok{round}\NormalTok{(}\KeywordTok{RMSE}\NormalTok{(predicted.ens, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{), }
+                    \DataTypeTok{R2=}\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(predicted.ens, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{))}
+\NormalTok{Results[}\DecValTok{8}\NormalTok{,]=}\KeywordTok{list}\NormalTok{(}\DataTypeTok{Model=}\StringTok{"Rborist"}\NormalTok{, }
+                    \DataTypeTok{RMSE=}\KeywordTok{round}\NormalTok{(}\KeywordTok{RMSE}\NormalTok{(predicted.Rborist, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{), }
+                    \DataTypeTok{R2=}\KeywordTok{round}\NormalTok{(}\KeywordTok{cor}\NormalTok{(predicted.Rborist, valdf}\OperatorTok{$}\NormalTok{Chance.of.Admit), }\DecValTok{3}\NormalTok{))}
+ 
+
+
+ 
+\KeywordTok{kable}\NormalTok{(Results, }\DataTypeTok{format=}\StringTok{"pandoc"}\NormalTok{, }
+      \DataTypeTok{digits=}\DecValTok{3}\NormalTok{, }\DataTypeTok{caption =} \StringTok{"Performance of the different models: RMSE and R2 values"}\NormalTok{ ) }
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-##     Rborist  Ensemble    Linear
-## 1 0.8720163 0.9116409 0.8940309
-\end{verbatim}
+\begin{longtable}[]{@{}lrr@{}}
+\caption{Performance of the different models: RMSE and R2
+values}\tabularnewline
+\toprule
+Model & RMSE & R2\tabularnewline
+\midrule
+\endfirsthead
+\toprule
+Model & RMSE & R2\tabularnewline
+\midrule
+\endhead
+Linear-Stepwise-Selected & 0.067 & 0.882\tabularnewline
+knn & 0.076 & 0.840\tabularnewline
+GLMnet & 0.065 & 0.887\tabularnewline
+XGBLinear & 0.081 & 0.825\tabularnewline
+brnn & 0.067 & 0.879\tabularnewline
+Ridge Regression & 0.066 & 0.885\tabularnewline
+Ensemble & 0.066 & 0.884\tabularnewline
+Rborist & 0.069 & 0.873\tabularnewline
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Results}\OperatorTok{%>%}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\KeywordTok{reorder}\NormalTok{(Model, }\OperatorTok{-}\NormalTok{RMSE), RMSE, }\DataTypeTok{fill=}\NormalTok{Model))}\OperatorTok{+}\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{)}\OperatorTok{+}\KeywordTok{theme_bw}\NormalTok{()}\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{axis.text.x =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle=}\DecValTok{90}\NormalTok{))}\OperatorTok{+}\KeywordTok{xlab}\NormalTok{(}\StringTok{"Model"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{USGradAdmission_files/figure-latex/validation_results-1.pdf}
 
 \hypertarget{conclusion}{%
 \section{Conclusion}\label{conclusion}}
@@ -1226,11 +1522,17 @@ technique with machine learning algorithms for their abilities to
 predict the admission probability of applicants to US graduate schools.
 The applicant characteristics such as GRE.Score, TOEFL.Score, CGPA, LOR
 and SOP were positively correlated with the admission probabilities.
-Both linear regression and an ensemble of maching learning algorithms
-both predicted the outcomes with great accuracy (RME =0.065 and R2 of
-0.88). For this given problem, either of the approaches will work.
-Nevertheless, owing to the simplicy of linear model, for practical
-purposes, the linear model approach is favored.
+GLMnet outperformed all of the other models, with a RMSE of 0.065 and a
+R2 value of 0.887. This model was closely followed by Ridge regression
+and Ensemble. It is clear that, in this case, invidividual models can
+perform better than the ensemble technique.
+
+\hypertarget{limitations}{%
+\subsection{Limitations}\label{limitations}}
+
+Owing to the limited sample sizes, this model has its' limitations.
+Tuning of parameters for invidividual models can offer opportunity to
+improve the performance of the models.
 
 
 
